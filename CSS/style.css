@@ -134,6 +134,11 @@ div.phome   {
     padding-top: 8rem;
     margin: auto;
 }
+
+main a  {
+    text-decoration: none;
+    color: white;
+}
 /* END MAIN STYLE */
 
 /* FOOTER STYLE */
