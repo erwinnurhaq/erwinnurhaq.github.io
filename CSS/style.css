@@ -1,0 +1,192 @@
+/* GLOBAL */
+body {
+    background-color: rgb(48, 48, 48);
+    background-image: url(../IMG/bg.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: top;
+    background-attachment: fixed;
+    font-family:  "Trebuchet MS", Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/*div.bghome  {
+    float: right;
+    
+}
+*/
+ul, li  {
+    padding: 0;
+    margin: 0;
+}
+
+/* HEADER STYLE */
+header   {
+    background-color: dimgray;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 20px black;
+}
+
+div.menu {
+    position: absolute;
+    bottom: 0;
+    padding: 0 0 0 2rem;
+    margin: 0;
+}
+
+div.menu ul, div.menu li  {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+div.menu a    {
+    text-decoration: none;
+    color: #ccc;
+}
+
+div.menu .menubtn    {
+    display: inline-block;
+    background-color: #3d3d3d;
+    text-align: center;
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+}
+
+div.menu .menubtn:hover {
+    display: inline-block;
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 10px 20px brown;
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    transition: 0.1s;
+}
+
+div.menu .menubtnactive {
+    display: inline-block;
+    background-color: rgb(48, 48, 48);
+    color: lightcoral;
+    font-weight: bold;
+    text-align: center;
+    border-top: 2px solid rgb(36, 36, 36);
+    box-shadow: 0 15px rgb(48, 48, 48);
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    transition: 0.1s;
+}
+
+div.logo   {
+    background-color: lightgray;
+    float: right;
+    width: 24rem;
+    text-align: center;
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+div.logo a   {
+    text-decoration: none;
+    color: rgb(48, 48, 48);
+}
+
+div.logo a:hover    {
+    text-decoration: none;
+    color: rgb(196, 108, 0);
+}
+
+div.logo h1  {
+    display: inline-block;
+    padding: 0 1rem 0 0;
+    margin: 0;
+}
+
+div.logo img {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    height: 35px;
+    width: 35px;
+}
+/* END HEADER STYLE */
+
+/* MAIN STYLE */
+main    {
+    width: 80%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    margin: auto;
+}
+
+div.phome   {
+    width: 80%;
+    padding-top: 8rem;
+    margin: auto;
+}
+/* END MAIN STYLE */
+
+/* FOOTER STYLE */
+div.footer  {
+    background-color: dimgray;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+div.footer p    {
+    padding: 0.5rem;
+    margin: 0;
+    text-align: center;
+    font-size: 10pt;
+}
+
+div.footer a    {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+div.footer a:hover  {
+    color: lightcoral ;
+    transition: 0.2s;
+}
+/* END FOOTER STYLE */
+
+/* MEDIA STYLE */
+@media(max-width:1024px) {
+    header   {
+        background-color: dimgray;
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        box-shadow: 0 0 20px black;
+    }
+    div.menu ul, div.menu li  {
+        display: block;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    div.logo{
+        background-color: lightgray;
+        float: right;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        margin: 0;
+    }
+}
