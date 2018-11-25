@@ -1,6 +1,6 @@
 /* GLOBAL */
 body {
-    background-color: rgb(48, 48, 48);
+    background-color: black;
     background-image: url(../IMG/bg.png);
     background-repeat: no-repeat;
     background-position-x: right;
@@ -24,13 +24,13 @@ ul, li  {
 
 /* HEADER STYLE */
 header   {
-    background-color: dimgray;
+    background-color: whitesmoke;
     position: fixed;
     width: 100%;
     top: 0;
     padding: 0;
     margin: 0;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 15px maroon;
 }
 
 div.menu {
@@ -48,12 +48,12 @@ div.menu ul, div.menu li  {
 
 div.menu a    {
     text-decoration: none;
-    color: #ccc;
+    color:white;
 }
 
 div.menu .menubtn    {
     display: inline-block;
-    background-color: #3d3d3d;
+    background-color: black;
     text-align: center;
     width: 10rem;
     padding: 0.5rem;
@@ -62,11 +62,11 @@ div.menu .menubtn    {
 
 div.menu .menubtn:hover {
     display: inline-block;
-    background-color: brown;
+    background-color: maroon;
     color: white;
     font-weight: bold;
     text-align: center;
-    box-shadow: 0 10px 20px brown;
+    box-shadow: 0 10px 20px maroon;
     width: 10rem;
     padding: 0.5rem;
     margin: 0 0.5rem;
@@ -75,12 +75,12 @@ div.menu .menubtn:hover {
 
 div.menu .menubtnactive {
     display: inline-block;
-    background-color: rgb(48, 48, 48);
-    color: lightcoral;
+    background-color: black;
+    color: white;
     font-weight: bold;
     text-align: center;
-    border-top: 2px solid rgb(36, 36, 36);
-    box-shadow: 0 15px rgb(48, 48, 48);
+    border-top: 3px solid maroon;
+    box-shadow: 0 15px black;
     width: 10rem;
     padding: 0.5rem;
     margin: 0 0.5rem;
@@ -88,7 +88,7 @@ div.menu .menubtnactive {
 }
 
 div.logo   {
-    background-color: lightgray;
+    background-color: whitesmoke;
     float: right;
     width: 24rem;
     text-align: center;
@@ -103,7 +103,7 @@ div.logo a   {
 
 div.logo a:hover    {
     text-decoration: none;
-    color: rgb(196, 108, 0);
+    color: maroon;
 }
 
 div.logo h1  {
@@ -129,9 +129,15 @@ main    {
     margin: auto;
 }
 
-div.phome   {
+div.phome  {
     width: 80%;
     padding-top: 8rem;
+    margin: auto;
+}
+
+div.konten {
+    width: 80%;
+    padding-top: 1rem;
     margin: auto;
 }
 
@@ -143,13 +149,14 @@ main a  {
 
 /* FOOTER STYLE */
 div.footer  {
-    background-color: dimgray;
+    background-color: whitesmoke;
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
 div.footer p    {
+    color: black;
     padding: 0.5rem;
     margin: 0;
     text-align: center;
@@ -163,7 +170,7 @@ div.footer a    {
 }
 
 div.footer a:hover  {
-    color: lightcoral ;
+    color: maroon ;
     transition: 0.2s;
 }
 /* END FOOTER STYLE */
@@ -171,7 +178,7 @@ div.footer a:hover  {
 /* MEDIA STYLE */
 @media(max-width:1024px) {
     header   {
-        background-color: dimgray;
+        background-color: whitesmoke;
         position: fixed;
         width: 100%;
         height: 100px;
@@ -187,7 +194,7 @@ div.footer a:hover  {
         width: 100%;
     }
     div.logo{
-        background-color: lightgray;
+        background-color: whitesmoke;
         float: right;
         width: 100%;
         text-align: center;

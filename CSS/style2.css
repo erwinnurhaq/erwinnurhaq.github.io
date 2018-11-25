@@ -16,9 +16,9 @@ div.menu2 a {
 
 div.menu2 .menubtn2  {
     display: inline-block;
-    background-color: dimgray;
+    background-color: black;
     width: 10rem;
-    color: #ccc;
+    color: white;
     text-align: center;
     padding: 0.4rem 1rem;
     margin: 0;
@@ -26,7 +26,8 @@ div.menu2 .menubtn2  {
 
 div.menu2 .menubtn2:hover  {
     display: inline-block;
-    background-color: lightcoral;
+    border: 1px solid white;
+    font-weight: bold;
     width: 10rem;
     color: white;
     text-align: center;
@@ -37,9 +38,10 @@ div.menu2 .menubtn2:hover  {
 
 div.menu2 .menubtn2active  {
     display: inline-block;
-    background-color: lightcoral;
+    border: 1px solid maroon;
+    background-color: maroon;
     width: 10rem;
-    color: rgb(48, 48, 48);
+    color: white;
     text-align: center;
     padding: 0.4rem 1rem;
     margin: 0;
@@ -70,16 +72,17 @@ div.kontenanime {
 }
 
 div.judul {
-    background-color: #3d3d3d;
-    border-bottom: 2px solid rgb(36, 36, 36);
+    background-color: whitesmoke;
+    border-bottom: 3px solid maroon;
     grid-column: 1/6;
+    color: black;
     font-size: 14pt;
-    font-weight: bold;
     text-align: center;
     padding: 0.5rem 0;
 }
 
 div.imageanime    {
+    background-color: white;
     height: 300px;
     width: 200px;
     text-align: center;
@@ -95,7 +98,8 @@ div.kontenanime img    {
 }
 
 div.data    {
-    background-color: rgb(48, 48, 48);
+    background-color: white;
+    color: black;
     grid-auto-columns: 200px;
     grid-column: 2/6;
     word-wrap: break-word;
@@ -103,20 +107,21 @@ div.data    {
 }
 
 div.rating1 {
-    background-color: dimgray;
+    color: white;
+    background-color: maroon;
     grid-column: 1/3;
     padding: 0.2rem 0 0.2rem 0.5rem;
 }
 
 div.rating2   {
-    background-color: lightcoral;
+    background-color: maroon;
     grid-column: 3/6;
     padding: 0.2rem 0.5rem 0.2rem 0;
     text-align: center;
 }
 
 span.containerdata   {
-    background-color: #3d3d3d;
+    background-color: rgb(36, 36, 36);
     grid-column: 1/6;
     margin: 0;
     padding: 0;
@@ -124,7 +129,7 @@ span.containerdata   {
 }
 
 span.containerdata .comments  {
-    background-color: dimgray;
+    background-color: rgb(36, 36, 36);
     grid-column: 1/6;
     padding: 0.1rem 1.5rem;
     margin: 0;
@@ -132,7 +137,7 @@ span.containerdata .comments  {
 }
 
 span.containerdata .synopsis {
-    background-color: #3d3d3d;
+    background-color: rgb(36, 36, 36);
     padding: 0.1rem 1.5rem;
     margin: 0;
     text-align: justify;
