@@ -1,13 +1,19 @@
 /* STYLE MENU2 */
 div.menu2   {
-    width: 80%;
-    margin: auto;
-    padding: 5rem 0 2rem 0;
+    background-color: black;
+    position: fixed;
+    top: 5rem;
+    width:100%;
+    margin: 0;
+    padding: 0;
     text-align: center;
+    z-index: 1;
 }
 
 div.menu2 ul, div.menu2 li  {
     display: inline-block;
+    margin: 0;
+    padding: 0;
 }
 
 div.menu2 a {
@@ -51,7 +57,7 @@ div.menu2 .menubtn2active  {
 /* STYLE KONTEN ANIME LIST */
 main.anime  {
     width: 80%;
-    padding-top: 0;
+    padding-top: 8rem;
     padding-bottom: 5rem;
     margin: auto;
 }

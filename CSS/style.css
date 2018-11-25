@@ -6,17 +6,12 @@ body {
     background-position-x: right;
     background-position-y: top;
     background-attachment: fixed;
-    font-family:  "Trebuchet MS", Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
     margin: 0;
     padding: 0;
 }
 
-/*div.bghome  {
-    float: right;
-    
-}
-*/
 ul, li  {
     padding: 0;
     margin: 0;
@@ -31,6 +26,7 @@ header   {
     padding: 0;
     margin: 0;
     box-shadow: 0 0 15px maroon;
+    z-index: 2;
 }
 
 div.menu {
@@ -53,71 +49,72 @@ div.menu a    {
 
 div.menu .menubtn    {
     display: inline-block;
-    background-color: black;
+    background-color: none;
+    color: lightgray;
+    font-size: 28px;
     text-align: center;
-    width: 10rem;
-    padding: 0.5rem;
-    margin: 0 0.5rem;
+    /*width: 12rem;*/
+    padding: 0 2rem;
+    margin: 0;
 }
 
 div.menu .menubtn:hover {
     display: inline-block;
-    background-color: maroon;
-    color: white;
-    font-weight: bold;
+    color: black;
     text-align: center;
-    box-shadow: 0 10px 20px maroon;
-    width: 10rem;
-    padding: 0.5rem;
-    margin: 0 0.5rem;
-    transition: 0.1s;
+    font-size: 28px;
+    text-shadow: 0 0 36px black;
+    box-shadow: 0 5px lightgray;
+    padding: 0 2rem;
+    margin: 0;
+    transition: 0.3s;
 }
 
 div.menu .menubtnactive {
     display: inline-block;
-    background-color: black;
-    color: white;
-    font-weight: bold;
+    background-color: none;
+    color: black;
+    font-size: 28px;
     text-align: center;
-    border-top: 3px solid maroon;
-    box-shadow: 0 15px black;
-    width: 10rem;
-    padding: 0.5rem;
-    margin: 0 0.5rem;
-    transition: 0.1s;
-}
-
-div.logo   {
-    background-color: whitesmoke;
-    float: right;
-    width: 24rem;
-    text-align: center;
-    padding: 0.5rem 0;
+    box-shadow: 0 5px maroon;
+    padding: 0 2rem;
     margin: 0;
 }
 
-div.logo a   {
-    text-decoration: none;
-    color: rgb(48, 48, 48);
+span.logo   {
+    /*background-color: whitesmoke;*/
+    float: right;
+    padding: 1rem 0;
+    margin: 0;
 }
 
-div.logo a:hover    {
+span.logo a   {
+    text-decoration: none;
+    color: rgb(48, 48, 48);
+    padding: 0;
+    margin: 0;
+}
+
+span.logo a:hover    {
     text-decoration: none;
     color: maroon;
 }
 
-div.logo h1  {
+span.logo p  {
     display: inline-block;
-    padding: 0 1rem 0 0;
+    /*border: 1px solid black;*/
+    font-size: 36px;
+    padding: 0;
     margin: 0;
 }
 
-div.logo img {
-    display: inline-block;
-    padding: 0;
+span.logo img {
+    float: right;
+    /*border: 1px solid black;*/
+    padding: 0 1rem;
     margin: 0;
-    height: 35px;
-    width: 35px;
+    height: 42px;
+    width: 42px;
 }
 /* END HEADER STYLE */
 
@@ -145,6 +142,7 @@ main a  {
     text-decoration: none;
     color: white;
 }
+
 /* END MAIN STYLE */
 
 /* FOOTER STYLE */
