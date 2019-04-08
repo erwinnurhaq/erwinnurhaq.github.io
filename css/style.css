@@ -1,0 +1,78 @@
+html, body    {
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #222;
+    background-color: rgb(100, 100, 100);
+}
+
+.nounderline    {
+    text-decoration: none !important;
+    color: #222 !important;
+}
+
+.padding    {
+    margin: 0;
+    padding: 0;
+}
+
+.paddingmenu    {
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.kolmenu    {
+    height: 85vh;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #222;
+}
+
+.kolmenu h1 {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.overlay1   {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-image: url(/img/hover1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay2   {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-image: url(/img/hover2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay3   {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-image: url(/img/hover3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.kolmenu:hover .overlay1, .kolmenu:hover .overlay2, .kolmenu:hover .overlay3 {
+    opacity: 1;
+    transform: translateY(5px) scaleX(1.02) scaleY(1.02);
+}
+
+
+
+footer  {
+    color: white;
+    font-size: 0.8rem;
+}
