@@ -1,0 +1,33 @@
+$body: #222;
+$textbody: whitesmoke;
+$navcolor: #222;
+
+@font-face {
+  font-family: OpenSansRegular;
+  src: url("../fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: OpenSansLight;
+  src: url("../fonts/OpenSans-Light.ttf");
+}
+@font-face {
+  font-family: OpenSansBold;
+  src: url("../fonts/OpenSans-Bold.ttf");
+}
+@font-face {
+  font-family: OpenSansSemiBold;
+  src: url("../fonts/OpenSans-Semibold.ttf");
+}
+
+@mixin noDecoration {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+
+@mixin flex($direction, $justifycontent, $alignitems) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justifycontent;
+  align-items: $alignitems;
+}
