@@ -21,8 +21,7 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
@@ -58,14 +57,14 @@ nav {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 nav .menu {
@@ -74,17 +73,17 @@ nav .menu {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   padding: 0 0 0 20px;
   height: 100%;
 }
@@ -99,11 +98,11 @@ nav .menu a {
   height: 100%;
   width: 130px;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   color: #222;
@@ -113,7 +112,7 @@ nav .menu a {
 nav .menu a:hover {
   background-color: white;
   -webkit-animation: ease-in;
-          animation: ease-in;
+  animation: ease-in;
 }
 
 nav .menu a i {
@@ -126,17 +125,17 @@ nav .logo {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   height: 100%;
   color: #222;
   font-size: 3vh;
@@ -148,8 +147,8 @@ nav .logo p {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 0 60px;
   background-color: whitesmoke;
 }
@@ -164,12 +163,12 @@ nav .logo p i {
   z-index: 0;
   background-color: #222;
   -webkit-box-shadow: 0 0 20px #222;
-          box-shadow: 0 0 20px #222;
+  box-shadow: 0 0 20px #222;
   height: 90vh;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .imgcontainer:hover a img {
@@ -187,14 +186,14 @@ nav .logo p i {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-transition: 1s;
   transition: 1s;
 }
@@ -223,12 +222,12 @@ nav .logo p i {
   opacity: 1;
   -webkit-filter: blur(0px);
   -webkit-animation: ease-in-out;
-          animation: ease-in-out;
+  animation: ease-in-out;
 }
 
 .imgcontainer a:hover p {
   -webkit-transform: translateY(-30vh) scaleX(1.2) scaleY(1.2);
-          transform: translateY(-30vh) scaleX(1.2) scaleY(1.2);
+  transform: translateY(-30vh) scaleX(1.2) scaleY(1.2);
   -webkit-transition: 0.2s;
   transition: 0.2s;
   color: #444;
@@ -243,13 +242,13 @@ nav .logo p i {
   bottom: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   z-index: 1;
 }
 
 .animate {
   -webkit-animation: slideDown 1s;
-          animation: slideDown 1s;
+  animation: slideDown 1s;
 }
 
 @-webkit-keyframes slideDown {
@@ -257,13 +256,13 @@ nav .logo p i {
     opacity: 0;
     pointer-events: none;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
   to {
     opacity: 1;
     pointer-events: all;
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -272,13 +271,13 @@ nav .logo p i {
     opacity: 0;
     pointer-events: none;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
   to {
     opacity: 1;
     pointer-events: all;
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 /*# sourceMappingURL=style.css.map */
