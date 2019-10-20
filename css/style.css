@@ -34,7 +34,7 @@ a {
 body {
   font-family: OpenSansRegular;
   color: whitesmoke;
-  background-color: #222;
+  background-color: #444;
 }
 
 .container {
@@ -162,6 +162,7 @@ nav .logo p i {
   position: absolute;
   top: 0;
   z-index: 0;
+  background-color: #222;
   -webkit-box-shadow: 0 0 20px #222;
           box-shadow: 0 0 20px #222;
   height: 90vh;
@@ -169,6 +170,11 @@ nav .logo p i {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.imgcontainer:hover a img {
+  opacity: 0.1;
+  -webkit-filter: blur(5px);
 }
 
 .imgcontainer a {
@@ -189,16 +195,17 @@ nav .logo p i {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .imgcontainer a img {
   max-height: 100%;
   min-height: 100%;
   min-width: 100%;
-  opacity: 0.1;
-  -webkit-filter: blur(5px);
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .imgcontainer a p {
@@ -206,6 +213,10 @@ nav .logo p i {
   font-family: OpenSansLight;
   font-size: 24px;
   color: whitesmoke;
+}
+
+.imgcontainer a:hover {
+  height: 105%;
 }
 
 .imgcontainer a:hover img {
@@ -220,7 +231,7 @@ nav .logo p i {
           transform: translateY(-30vh) scaleX(1.2) scaleY(1.2);
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  color: #222;
+  color: #444;
   background-color: whitesmoke;
   padding: 0 5px;
 }
@@ -234,5 +245,36 @@ nav .logo p i {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   z-index: 1;
+}
+
+.animate {
+  -webkit-animation: slideDown 1s;
+          animation: slideDown 1s;
+}
+
+@-webkit-keyframes slideDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
 }
 /*# sourceMappingURL=style.css.map */
