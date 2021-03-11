@@ -1,0 +1,125 @@
+.home {
+	width: 100%;
+
+	.bar {
+		position: fixed;
+		z-index: 10;
+		width: 1rem;
+		height: 100vh;
+		background-color: var(--bgColor3);
+	}
+
+	#hero-bg-canvas {
+		position: fixed;
+		z-index: 0;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+	}
+
+	.hero {
+		margin-top: 50vh;
+		display: flex;
+		flex-direction: column;
+		padding: 0 5rem;
+		mix-blend-mode: difference;
+		width: 100%;
+		height: calc(400vh - 50vh);
+		position: absolute;
+		z-index: 10;
+
+		.hero-content {
+			position: sticky;
+			top: 10vh;
+			display: flex;
+			align-items: center;
+
+			.left {
+				display: flex;
+				align-items: center;
+				height: 10rem;
+				padding-right: 4rem;
+				border-right: 2px dashed var(--textColor3);
+				.title {
+					font-size: 8rem;
+					margin-top: -3rem;
+					color: var(--textColor1);
+				}
+			}
+
+			.right {
+				width: 80vw;
+				border-bottom: 1px solid var(--textColor3);
+				padding-left: 2rem;
+				.sundara {
+					padding-left: 1rem;
+					font-family: 'Noto Sans Sundanese';
+					font-size: 2rem;
+					color: var(--textColor1);
+				}
+
+				.subtitle {
+					padding-left: 1rem;
+					color: var(--textColor3);
+				}
+			}
+		}
+	}
+
+	.content {
+		margin-top: 100vh;
+		section {
+			width: 100%;
+			height: 100vh;
+			z-index: 1;
+			position: relative;
+			transition: transform 0.5s ease-in-out;
+			will-change: transform;
+			-webkit-transition: transform 0.51s ease-in-out;
+			-moz-transition: transform 0.51s ease-in-out;
+			-ms-transition: transform 0.51s ease-in-out;
+			-o-transition: transform 0.51s ease-in-out;
+			&.introduction {
+				background-color: var(--bgColor3);
+
+				&::before {
+					content: '';
+					width: 100%;
+					height: 10vh;
+					position: absolute;
+					top: -20vh;
+					border-top: 20vh solid transparent;
+					border-right: 100vw solid var(--bgColor3);
+				}
+				&::after {
+					content: '';
+					width: 100%;
+					height: 10vh;
+					position: absolute;
+					bottom: -20vh;
+					border-bottom: 20vh solid transparent;
+					border-left: 100vw solid var(--bgColor3);
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1366px) {
+	.home .hero .hero-content {
+		.left .title {
+			margin-top: -2rem;
+			font-size: 6rem;
+		}
+		.right {
+			.sundara {
+				font-size: 1.8rem;
+			}
+
+			.subtitle {
+				font-size: 0.8rem;
+			}
+		}
+	}
+}
