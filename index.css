@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "consolas";
+  margin: 0;
+  padding: 0;
+  background-color: #111111;
+  color: white;
+  position: relative;
+  cursor: none;
+}
+section {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+.n-cursor-one, .n-cursor-two, .n-crosshair-v, .n-crosshair-h {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.n-cursor-one, .n-cursor-two {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.n-cursor-one {
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+.n-cursor-two {
+  width: 25px;
+  height: 25px;
+  border: 1px solid white;
+  opacity: 0.5;
+  transition: all 200ms ease-out;
+}
+.n-crosshair-v, .n-crosshair-h {
+  opacity: 0.2;
+}
+.n-crosshair-v {
+  height: 100vh;
+  border-left: 1px dashed white;
+}
+.n-crosshair-h {
+  width: 100vw;
+  border-top: 1px dashed white;
+}
+.n-cursor-down {
+  width: 16px;
+  height: 16px;
+  opacity: 0.3;
+}
