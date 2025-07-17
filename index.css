@@ -3,12 +3,28 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --dark: #111111;
+  --light: #ffffff;
+}
+::selection {
+  color: var(--dark);
+  background-color: var(--light);
+}
+::-moz-selection {
+  color: var(--dark);
+  background-color: var(--light);
+}
+::-ms-selection {
+  color: var(--dark);
+  background-color: var(--light);
+}
 body {
   font-family: "consolas";
   margin: 0;
   padding: 0;
-  background-color: #111111;
-  color: white;
+  background-color: var(--dark);
+  color: var(--light);
   position: relative;
   cursor: none;
 }
@@ -31,13 +47,13 @@ section {
 .n-cursor-one {
   width: 5px;
   height: 5px;
-  background-color: white;
+  background-color: var(--light);
   transition: width 0.3s, height 0.3s, opacity 0.3s;
 }
 .n-cursor-two {
   width: 25px;
   height: 25px;
-  border: 1px solid white;
+  border: 1px solid var(--light);
   opacity: 0.5;
   transition: all 200ms ease-out;
 }
@@ -46,11 +62,11 @@ section {
 }
 .n-crosshair-v {
   height: 100vh;
-  border-left: 1px dashed white;
+  border-left: 1px dashed var(--light);
 }
 .n-crosshair-h {
   width: 100vw;
-  border-top: 1px dashed white;
+  border-top: 1px dashed var(--light);
 }
 .n-cursor-down {
   width: 16px;
