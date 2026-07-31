@@ -4,7 +4,7 @@ const cursorOne = document.querySelector(".n-cursor-one");
 const cursorTwo = document.querySelector(".n-cursor-two");
 const footerYear = document.getElementById("footer-year");
 
-const hoverableTagName = ["A", "H1", "H2", "H3"];
+const hoverableTagName = ["A", "H1", "H2", "H3", "BUTTON"];
 let mouseX = 0;
 let mouseY = 0;
 let hoverable = false;
@@ -46,5 +46,22 @@ window.addEventListener("mouseup", mousesUp);
 if (footerYear) {
 	footerYear.innerHTML = new Date().getFullYear();
 }
+
+const themeToggle = document.getElementById("theme-toggle");
+if (themeToggle) {
+	const currentTheme = document.documentElement.getAttribute("data-theme") || 
+		(window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+	themeToggle.innerText = currentTheme === "light" ? "[ ☾ ]" : "[ ☀ ]";
+
+	themeToggle.addEventListener("click", () => {
+		const isLight = document.documentElement.getAttribute("data-theme") === "light" || 
+			(!document.documentElement.hasAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: light)").matches);
+		const newTheme = isLight ? "dark" : "light";
+		document.documentElement.setAttribute("data-theme", newTheme);
+		localStorage.setItem("theme", newTheme);
+		themeToggle.innerText = newTheme === "light" ? "[ ☾ ]" : "[ ☀ ]";
+	});
+}
+
 console.info(`> Ich bin gut. lololol ∘ ∘ ∘ ( °ヮ° )' `);
 requestAnimationFrame(updateCursor);

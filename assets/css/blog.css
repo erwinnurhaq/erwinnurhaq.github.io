@@ -33,7 +33,7 @@
 
 .post-title {
   font-size: 1.2rem;
-  color: var(--light);
+  color: var(--theme-fg);
   text-decoration: none;
   transition: color 0.3s;
 }

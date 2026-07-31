@@ -7,7 +7,13 @@
 :root {
   --dark: #111111;
   --light: #ffffff;
+  
+  /* Theme mapping defaults to dark */
+  --theme-bg: var(--dark);
+  --theme-fg: var(--light);
   --link: #0ff;
+  --link-border: rgba(0, 255, 255, 0.3);
+  --link-bg: rgba(0, 255, 255, 0.05);
 
   /* Text Colors */
   --text-main: #dddddd;
@@ -19,27 +25,63 @@
   --border-lighter: rgba(255, 255, 255, 0.2);
   --bg-light: rgba(255, 255, 255, 0.05);
 
-  /* Link Variations */
-  --link-border: rgba(0, 255, 255, 0.3);
-  --link-bg: rgba(0, 255, 255, 0.05);
-
   /* Code Blocks */
   --dark-code: #0a0a0a;
 }
 
+/* Light Mode Overrides ("Silver Screen") */
+[data-theme="light"] {
+  --theme-bg: #f0f0f0;
+  --theme-fg: #000000;
+  --link: #0055cc;
+  --link-border: rgba(0, 85, 204, 0.3);
+  --link-bg: rgba(0, 85, 204, 0.05);
+
+  --text-main: #333333;
+  --text-muted: #555555;
+  --text-lighter: #777777;
+
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-lighter: rgba(0, 0, 0, 0.2);
+  --bg-light: rgba(0, 0, 0, 0.05);
+
+  --dark-code: #e0e0e0;
+}
+
+/* System preference defaults (fallback if no local storage is set) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --theme-bg: #f0f0f0;
+    --theme-fg: #000000;
+    --link: #0055cc;
+    --link-border: rgba(0, 85, 204, 0.3);
+    --link-bg: rgba(0, 85, 204, 0.05);
+
+    --text-main: #333333;
+    --text-muted: #555555;
+    --text-lighter: #777777;
+
+    --border-light: rgba(0, 0, 0, 0.1);
+    --border-lighter: rgba(0, 0, 0, 0.2);
+    --bg-light: rgba(0, 0, 0, 0.05);
+
+    --dark-code: #e0e0e0;
+  }
+}
+
 ::selection {
-  color: var(--dark);
-  background-color: var(--light);
+  color: var(--theme-bg);
+  background-color: var(--theme-fg);
 }
 
 ::-moz-selection {
-  color: var(--dark);
-  background-color: var(--light);
+  color: var(--theme-bg);
+  background-color: var(--theme-fg);
 }
 
 ::-ms-selection {
-  color: var(--dark);
-  background-color: var(--light);
+  color: var(--theme-bg);
+  background-color: var(--theme-fg);
 }
 
 html {
@@ -51,8 +93,8 @@ body {
   font-family: monospace;
   margin: 0;
   padding: 0;
-  background-color: var(--dark);
-  color: var(--light);
+  background-color: var(--theme-bg);
+  color: var(--theme-fg);
   position: relative;
   cursor: none;
 }
@@ -167,7 +209,7 @@ footer {
 .n-cursor-one {
   width: 5px;
   height: 5px;
-  background-color: var(--light);
+  background-color: var(--theme-fg);
   transition:
     width 0.3s,
     height 0.3s,
@@ -177,7 +219,7 @@ footer {
 .n-cursor-two {
   width: 25px;
   height: 25px;
-  border: 1px solid var(--light);
+  border: 1px solid var(--theme-fg);
   opacity: 0.5;
   transition: all 200ms ease-out;
 }
@@ -189,12 +231,12 @@ footer {
 
 .n-crosshair-v {
   height: 100vh;
-  border-left: 1px dashed var(--light);
+  border-left: 1px dashed var(--theme-fg);
 }
 
 .n-crosshair-h {
   width: 100vw;
-  border-top: 1px dashed var(--light);
+  border-top: 1px dashed var(--theme-fg);
 }
 
 .n-cursor-down {
@@ -213,4 +255,24 @@ footer {
 .site-footer {
   margin-top: 5rem;
   text-align: center;
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--theme-fg);
+  cursor: none;
+  font-family: monospace;
+  font-size: 1.1rem;
+  z-index: 100;
+  padding: 0.5rem;
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+
+#theme-toggle:hover {
+  opacity: 0.7;
 }

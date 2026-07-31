@@ -16,7 +16,7 @@
 .markdown-body h3,
 .markdown-body h4 {
   font-family: monospace;
-  color: var(--light);
+  color: var(--theme-fg);
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   font-weight: normal;
@@ -29,7 +29,7 @@
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
-  color: var(--light);
+  color: var(--theme-fg);
 }
 
 .markdown-body h1 {
@@ -66,12 +66,12 @@
 
 .markdown-body a:hover {
   background-color: var(--link);
-  color: var(--dark);
+  color: var(--theme-bg);
   border-bottom-style: solid;
 }
 
 .markdown-body strong {
-  color: var(--light);
+  color: var(--theme-fg);
   font-weight: 600;
 }
 
@@ -183,7 +183,7 @@
   text-decoration: none;
   width: 48%;
   padding: 1.5rem;
-  background: var(--dark);
+  background: var(--theme-bg);
   border: 2px solid var(--border-light);
   transition: all 0.2s ease;
 }
@@ -191,7 +191,7 @@
 .post-navigation a:hover {
   background: var(--link);
   border-color: var(--link);
-  color: var(--dark);
+  color: var(--theme-bg);
 }
 
 .post-navigation .nav-prev {
@@ -212,17 +212,17 @@
 }
 
 .post-navigation a:hover .nav-label {
-  color: var(--dark);
+  color: var(--theme-bg);
   opacity: 0.8;
 }
 
 .post-navigation .nav-title {
   font-size: 1.1rem;
-  color: var(--light);
+  color: var(--theme-fg);
   font-weight: 500;
   font-family: monospace;
 }
 
 .post-navigation a:hover .nav-title {
-  color: var(--dark);
+  color: var(--theme-bg);
 }
