@@ -32,10 +32,10 @@
     content="Explore my web development portfolio on erwww.in. I build clean, efficient websites and web apps." />
   <meta name="twitter:image" content="https://erwww.in/og-image.jpg" />
 
-  <link rel="stylesheet" href="/assets/css/index.css" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/assets/css/index.css?v={{ site.time | date: '%s' }}" />
 
-  <script src="/theme-init.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/theme-init.js?v={{ site.time | date: '%s' }}"></script>
 </head>
 
 <body>
@@ -162,7 +162,7 @@
   <div class="n-cursor-one"></div>
   <div class="n-cursor-two"></div>
 
-  <script src="/main.js"></script>
+  <script src="/main.js?v={{ site.time | date: '%s' }}"></script>
 </body>
 
 </html>
