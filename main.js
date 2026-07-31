@@ -49,12 +49,12 @@ if (footerYear) {
 
 const themeToggle = document.getElementById("theme-toggle");
 if (themeToggle) {
-	const currentTheme = document.documentElement.getAttribute("data-theme") || 
+	const currentTheme = document.documentElement.getAttribute("data-theme") ||
 		(window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
 	themeToggle.innerText = currentTheme === "light" ? "[ ☾ ]" : "[ ☀ ]";
 
 	themeToggle.addEventListener("click", () => {
-		const isLight = document.documentElement.getAttribute("data-theme") === "light" || 
+		const isLight = document.documentElement.getAttribute("data-theme") === "light" ||
 			(!document.documentElement.hasAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: light)").matches);
 		const newTheme = isLight ? "dark" : "light";
 		document.documentElement.setAttribute("data-theme", newTheme);
@@ -63,5 +63,5 @@ if (themeToggle) {
 	});
 }
 
-console.info(`> Ich bin gut. lololol ∘ ∘ ∘ ( °ヮ° )' `);
+console.info(`> Ich bin gut. lololol ∘ ∘ ∘ ( °ヮ° )'. `);
 requestAnimationFrame(updateCursor);
