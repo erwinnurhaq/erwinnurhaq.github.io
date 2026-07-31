@@ -8,6 +8,23 @@
   --dark: #111111;
   --light: #ffffff;
   --link: #0ff;
+
+  /* Text Colors */
+  --text-main: #dddddd;
+  --text-muted: #888888;
+  --text-lighter: #bbbbbb;
+
+  /* Borders and Backgrounds */
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-lighter: rgba(255, 255, 255, 0.2);
+  --bg-light: rgba(255, 255, 255, 0.05);
+
+  /* Link Variations */
+  --link-border: rgba(0, 255, 255, 0.3);
+  --link-bg: rgba(0, 255, 255, 0.05);
+
+  /* Code Blocks */
+  --dark-code: #0a0a0a;
 }
 
 ::selection {
@@ -93,16 +110,15 @@ ul {
   padding: 0;
 }
 
-
 section {
   margin: 5rem 0;
 }
 
 .main-container {
-  max-width: 800px;
+  max-width: 1024px;
   text-align: center;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
 .screen {
@@ -152,7 +168,10 @@ footer {
   width: 5px;
   height: 5px;
   background-color: var(--light);
-  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  transition:
+    width 0.3s,
+    height 0.3s,
+    opacity 0.3s;
 }
 
 .n-cursor-two {
@@ -182,4 +201,16 @@ footer {
   width: 16px;
   height: 16px;
   opacity: 0.3;
+}
+
+/* Layout Components */
+
+.back-navigation {
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.site-footer {
+  margin-top: 5rem;
+  text-align: center;
 }
