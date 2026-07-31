@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>{{ page.title | default: "erwww.in | Blog" }}</title>
+
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <style>
+    /* Some basic markdown layout fixes to align with your aesthetic */
+    .markdown-body {
+      text-align: left;
+      margin-top: 2rem;
+    }
+
+    .markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .markdown-body th,
+    .markdown-body td {
+      border: 1px solid var(--link);
+      padding: 0.5rem;
+    }
+
+    .markdown-body pre {
+      background: #222;
+      padding: 1rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .markdown-body blockquote {
+      border-left: 2px solid var(--link);
+      padding-left: 1rem;
+      color: #ccc;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+
+    <section style="text-align: left; margin-top: 2rem;">
+      <p><a href="/">← Back to Home</a></p>
+    </section>
+
+    <section class="markdown-body">
+      {{ content }}
+    </section>
+
+    <section style="margin-top: 5rem; text-align: center;">
+      <p><a href="/">erwww.in</a></p>
+    </section>
+
+  </div>
+
+  <!-- The custom cursors -->
+  <div class="n-crosshair-v"></div>
+  <div class="n-crosshair-h"></div>
+  <div class="n-cursor-one"></div>
+  <div class="n-cursor-two"></div>
+
+  <script src="/main.js"></script>
+</body>
+
+</html>
