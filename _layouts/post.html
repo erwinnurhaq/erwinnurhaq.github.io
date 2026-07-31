@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>{{ page.title | default: "erwww.in | Blog" }}</title>
+
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-dark.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <style>
+    .main-container {
+      max-width: 1280px;
+      text-align: left;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+
+    .markdown-body {
+      font-family: inherit;
+      background-color: transparent !important;
+      color: inherit;
+    }
+
+    .markdown-body a {
+      color: var(--link) !important;
+    }
+
+    .markdown-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 2rem auto;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+
+    <section style="text-align: left; margin-top: 2rem;">
+      <p><a href="/blog/">← Back to Blog Index</a></p>
+    </section>
+
+    <!-- Post Metadata (Date & Tags) -->
+    {% if page.date or page.tags %}
+    <section style="text-align: left; margin-bottom: 2rem;">
+      <div style="color: #888; font-size: 0.9em; border-bottom: 1px dashed var(--link); padding-bottom: 1rem;">
+        {% if page.date %}
+        <span style="margin-right: 1rem;">📅 {{ page.date | date: "%B %d, %Y" }}</span>
+        {% endif %}
+        {% if page.tags %}
+        <span>🏷️ {{ page.tags | join: ", " }}</span>
+        {% endif %}
+      </div>
+    </section>
+    {% endif %}
+
+    <section class="markdown-body">
+      {{ content }}
+    </section>
+
+    <section style="margin-top: 5rem; text-align: center;">
+      <p><a href="/">erwww.in</a></p>
+    </section>
+
+  </div>
+
+  <!-- The custom cursors -->
+  <div class="n-crosshair-v"></div>
+  <div class="n-crosshair-h"></div>
+  <div class="n-cursor-one"></div>
+  <div class="n-cursor-two"></div>
+
+  <script src="/main.js"></script>
+</body>
+
+</html>

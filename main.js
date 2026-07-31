@@ -41,6 +41,8 @@ function updateCursor() {
 window.addEventListener("mousemove", mouseMove);
 window.addEventListener("mousedown", mouseDown);
 window.addEventListener("mouseup", mousesUp);
-footerYear.innerHTML = new Date().getFullYear();
+if (footerYear) {
+  footerYear.innerHTML = new Date().getFullYear();
+}
 console.info(`> Ich bin gut. lololol ∘ ∘ ∘ ( °ヮ° )' `);
 requestAnimationFrame(updateCursor);

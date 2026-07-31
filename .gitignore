@@ -1,2 +1,4 @@
 /node_modules
 /.next
+/_site
+/.jekyll-cache

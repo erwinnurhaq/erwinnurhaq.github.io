@@ -1,6 +1,10 @@
+collections:
+  blog:
+    output: true
+    permalink: /blog/:path/
+
 defaults:
-  -
-    scope:
-      path: "blog"
+  - scope:
+      path: "_blog"
     values:
-      layout: "default"
+      layout: "post"

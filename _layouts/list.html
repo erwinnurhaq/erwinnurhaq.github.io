@@ -9,39 +9,25 @@
   <title>{{ page.title | default: "erwww.in | Blog" }}</title>
 
   <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-dark.css" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <style>
-    /* Some basic markdown layout fixes to align with your aesthetic */
-    .markdown-body {
+    .main-container {
+      max-width: 1280px;
       text-align: left;
-      margin-top: 2rem;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 3rem);
     }
 
-    .markdown-body table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 2rem;
+    .markdown-body {
+      font-family: inherit;
+      background-color: transparent !important;
+      color: inherit;
     }
 
-    .markdown-body th,
-    .markdown-body td {
-      border: 1px solid var(--link);
-      padding: 0.5rem;
-    }
-
-    .markdown-body pre {
-      background: #222;
-      padding: 1rem;
-      overflow-x: auto;
-      margin-bottom: 1.5rem;
-    }
-
-    .markdown-body blockquote {
-      border-left: 2px solid var(--link);
-      padding-left: 1rem;
-      color: #ccc;
-      margin-bottom: 1.5rem;
+    .markdown-body a {
+      color: var(--link) !important;
     }
   </style>
 </head>
@@ -52,6 +38,8 @@
     <section style="text-align: left; margin-top: 2rem;">
       <p><a href="/">← Back to Home</a></p>
     </section>
+
+
 
     <section class="markdown-body">
       {{ content }}
