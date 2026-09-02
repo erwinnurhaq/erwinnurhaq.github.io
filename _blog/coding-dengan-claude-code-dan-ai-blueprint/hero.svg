@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#1a2333"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#58a6ff"/>
+      <stop offset="100%" style="stop-color:#8250df"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3fb950"/>
+      <stop offset="100%" style="stop-color:#56d364"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.05">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#58a6ff" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+
+  <!-- Orbital glow -->
+  <ellipse cx="600" cy="315" rx="450" ry="250" fill="#8250df" opacity="0.06" filter="url(#softGlow)"/>
+  <ellipse cx="200" cy="400" rx="250" ry="180" fill="#58a6ff" opacity="0.05" filter="url(#softGlow)"/>
+  <ellipse cx="1000" cy="250" rx="200" ry="150" fill="#3fb950" opacity="0.04" filter="url(#softGlow)"/>
+
+  <!-- Floating terminal windows -->
+  <!-- Terminal 1 - left -->
+  <g transform="translate(60, 80)">
+    <rect width="320" height="180" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+    <rect width="320" height="28" rx="8" fill="#21262d"/>
+    <rect y="28" width="320" height="1" fill="#30363d"/>
+    <circle cx="20" cy="14" r="5" fill="#ff5555"/>
+    <circle cx="38" cy="14" r="5" fill="#ffb347"/>
+    <circle cx="56" cy="14" r="5" fill="#45d45d"/>
+    <text x="160" y="18" fill="#8b949e" font-family="monospace" font-size="10" text-anchor="middle" dominant-baseline="middle">claude@dev</text>
+    <text x="16" y="50" fill="#58a6ff" font-family="monospace" font-size="11">$ /onboard</text>
+    <text x="16" y="68" fill="#3fb950" font-family="monospace" font-size="11">→ Inspecting project...</text>
+    <text x="16" y="84" fill="#8b949e" font-family="monospace" font-size="11">→ Stack: React + Vite</text>
+    <text x="16" y="100" fill="#8b949e" font-family="monospace" font-size="11">→ Conventions detected ✅</text>
+    <text x="16" y="116" fill="#45d45d" font-family="monospace" font-size="11" filter="url(#glow)">→ BP workflow ready ✓</text>
+    <text x="16" y="135" fill="#58a6ff" font-family="monospace" font-size="11">$ /feature "login page"</text>
+    <text x="16" y="153" fill="#3fb950" font-family="monospace" font-size="11">→ Writing spec...</text>
+    <text x="16" y="169" fill="#ffb347" font-family="monospace" font-size="9">▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌░░░</text>
+  </g>
+
+  <!-- Terminal 2 - right -->
+  <g transform="translate(820, 100)">
+    <rect width="320" height="170" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+    <rect width="320" height="28" rx="8" fill="#21262d"/>
+    <rect y="28" width="320" height="1" fill="#30363d"/>
+    <circle cx="20" cy="14" r="5" fill="#ff5555"/>
+    <circle cx="38" cy="14" r="5" fill="#ffb347"/>
+    <circle cx="56" cy="14" r="5" fill="#45d45d"/>
+    <text x="160" y="18" fill="#8b949e" font-family="monospace" font-size="10" text-anchor="middle" dominant-baseline="middle">blueprint status</text>
+    <text x="16" y="50" fill="#58a6ff" font-family="monospace" font-size="11">$ /status</text>
+    <text x="16" y="68" fill="#8b949e" font-family="monospace" font-size="11">━━━━━━━━━━━━━━━━━━━━</text>
+    <text x="16" y="84" fill="#3fb950" font-family="monospace" font-size="11">✅ Plans: 2/2 filled</text>
+    <text x="16" y="100" fill="#45d45d" font-family="monospace" font-size="11">✅ Context: loaded</text>
+    <text x="16" y="116" fill="#ffb347" font-family="monospace" font-size="11">⏳ Feature: login-page</text>
+    <text x="16" y="132" fill="#8b949e" font-family="monospace" font-size="11">📁 Project Plan (spec)</text>
+    <text x="16" y="148" fill="#8b949e" font-family="monospace" font-size="11">📋 Build Plan (6/12 done)</text>
+  </g>
+
+  <!-- Center: Code block visualization -->
+  <g transform="translate(380, 320)">
+    <rect width="440" height="260" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <rect width="440" height="36" rx="10" fill="#21262d"/>
+    <rect y="36" width="440" height="1" fill="#30363d"/>
+    <circle cx="22" cy="18" r="5" fill="#ff5555"/>
+    <circle cx="40" cy="18" r="5" fill="#ffb347"/>
+    <circle cx="58" cy="18" r="5" fill="#45d45d"/>
+
+    <!-- Code content -->
+    <g font-family="monospace" font-size="11">
+      <!-- Line 1 - comment -->
+      <text x="20" y="58" fill="#8b949e">// blueprint/current-feature.md</text>
+
+      <!-- Line 2 -->
+      <text x="20" y="78" fill="#58a6ff">## Feature:</text>
+      <text x="140" y="78" fill="#ffa657">Login Page</text>
+
+      <!-- Line 3 -->
+      <text x="20" y="96" fill="#58a6ff">## Status:</text>
+      <text x="140" y="96" fill="#3fb950">Implementing</text>
+
+      <!-- Line 4 -->
+      <text x="20" y="116" fill="#58a6ff">## Criteria:</text>
+
+      <!-- Bullet list -->
+      <text x="36" y="134" fill="#8b949e">-</text>
+      <text x="48" y="134" fill="#e6edf3">Email + password form</text>
+      <text x="230" y="134" fill="#3fb950">✅</text>
+
+      <text x="36" y="152" fill="#8b949e">-</text>
+      <text x="48" y="152" fill="#e6edf3">Client & server validation</text>
+      <text x="300" y="152" fill="#3fb950">✅</text>
+
+      <text x="36" y="170" fill="#8b949e">-</text>
+      <text x="48" y="170" fill="#e6edf3">Error handling + UX</text>
+      <text x="290" y="170" fill="#ffb347">⏳</text>
+
+      <!-- Separator -->
+      <text x="20" y="192" fill="#30363d">━━━━━━━━━━━━━━━━━</text>
+
+      <!-- Next action prompt -->
+      <text x="20" y="212" fill="#58a6ff">$ /check</text>
+      <text x="100" y="212" fill="#8b949e">→ Verify done-when criteria</text>
+
+      <!-- Blinking cursor -->
+      <rect x="20" y="218" width="7" height="12" rx="1" fill="#58a6ff" opacity="0.8" filter="url(#glow)">
+        <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.2s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+  </g>
+
+  <!-- Connected nodes / workflow visualization -->
+  <g transform="translate(100, 420)" font-family="monospace" font-size="10">
+    <!-- Mini workflow pipeline -->
+    <rect x="0" y="20" width="70" height="24" rx="12" fill="#21262d" stroke="#58a6ff" stroke-width="1"/>
+    <text x="35" y="34" fill="#58a6ff" text-anchor="middle" dominant-baseline="middle">feature</text>
+    <line x1="70" y1="32" x2="85" y2="32" stroke="#30363d" stroke-width="1.5"/>
+
+    <rect x="85" y="20" width="70" height="24" rx="12" fill="#21262d" stroke="#8250df" stroke-width="1"/>
+    <text x="120" y="34" fill="#8250df" text-anchor="middle" dominant-baseline="middle">review</text>
+    <line x1="155" y1="32" x2="170" y2="32" stroke="#30363d" stroke-width="1.5"/>
+
+    <rect x="170" y="20" width="80" height="24" rx="12" fill="#21262d" stroke="#3fb950" stroke-width="1"/>
+    <text x="210" y="34" fill="#3fb950" text-anchor="middle" dominant-baseline="middle">implement</text>
+    <line x1="250" y1="32" x2="265" y2="32" stroke="#30363d" stroke-width="1.5"/>
+
+    <rect x="265" y="20" width="60" height="24" rx="12" fill="#21262d" stroke="#ffb347" stroke-width="1"/>
+    <text x="295" y="34" fill="#ffb347" text-anchor="middle" dominant-baseline="middle">check</text>
+    <line x1="325" y1="32" x2="340" y2="32" stroke="#30363d" stroke-width="1.5"/>
+
+    <rect x="340" y="20" width="80" height="24" rx="12" fill="#21262d" stroke="#45d45d" stroke-width="1"/>
+    <text x="380" y="34" fill="#45d45d" text-anchor="middle" dominant-baseline="middle">complete</text>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="55" fill="#e6edf3" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" filter="url(#glow)">Claude Code + AI Blueprint</text>
+  <text x="600" y="75" fill="#8b949e" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Structured AI-powered development workflow</text>
+
+  <!-- AI Blueprint badge -->
+  <g transform="translate(1050, 55)">
+    <rect x="-80" y="-14" width="160" height="28" rx="14" fill="#8250df" opacity="0.15" stroke="#8250df" stroke-width="0.5"/>
+    <text x="0" y="4" fill="#d2a8ff" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="middle">ai-blueprint.dev</text>
+  </g>
+</svg>

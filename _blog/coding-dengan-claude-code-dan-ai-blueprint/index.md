@@ -9,7 +9,7 @@ excerpt: "Gimana caranya bikin Claude Code jadi reliable bikin fitur dari awal s
 
 # Ngoding Pakai Claude Code dan AI Blueprint: Akhirnya AI yang Nggak Ngaco
 
-![Coding with AI](hero.png)
+![Coding with AI](hero.svg)
 
 Lu pernah nggak sih ngalamin ini: lu ngasih tugas ke Claude Code, "Bikin halaman login dong." Dua menit kemudian, lu dapet 15 file baru, routing berubah total, ada database migration yang nggak lu minta, dan—entah kenapa—skema warnanya jadi pake palet Barbie core.
 
