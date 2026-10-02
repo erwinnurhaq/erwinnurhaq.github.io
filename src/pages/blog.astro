@@ -7,39 +7,36 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const formatYear = (date: Date) => date.getFullYear().toString();
-const formatMonth = (date: Date) =>
-  date.toLocaleDateString('en-US', { month: 'long' });
 const formatDay = (date: Date) =>
-  date.toLocaleDateString('en-US', { day: '2-digit' });
+  date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
 ---
 
-<Layout title="Blog" description="A collection of thoughts on frontend engineering, design, and building for the web." page="blog">
+<Layout title="Blog" description="Notes on frontend engineering, design, and building for the web." page="blog">
   <section class="back-navigation">
-    <p><a href="/">← Back to Home</a></p>
+    <p><a href="/">← home</a></p>
   </section>
 
-  <section>
-    <h1 class="blog-title">The Blog</h1>
-    <p class="blog-description">A collection of thoughts on frontend
-      engineering, design, and building for the web.</p>
+  <section class="page-head">
+    <p class="mono" style="font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Notebook — {posts.length} entries</p>
+    <h1>Writing.</h1>
+    <p>Short notes from the trenches. What broke, what worked, what I'd do differently.</p>
+  </section>
 
+  <section style="padding-bottom:3rem;">
     {
       posts.map((post, index) => {
         const prev = posts[index - 1];
         const showYear = !prev || post.data.date.getFullYear() !== prev.data.date.getFullYear();
-        const showMonth = !prev || post.data.date.getMonth() !== prev.data.date.getMonth();
-
         return (
           <>
             {showYear && <h2 class="year-heading">{formatYear(post.data.date)}</h2>}
-            {showMonth && <h3 class="month-heading">{formatMonth(post.data.date)}</h3>}
             <div class="post-item">
-              <p class="post-header">
-                <strong><a href={`/blog/${post.slug}/`} class="post-title">{post.data.title}</a></strong>
-                <span class="date">· {formatDay(post.data.date)}</span>
+              <p>
+                <a href={`/blog/${post.slug}/`} class="post-title">{post.data.title}</a>
+                <span class="date">{formatDay(post.data.date)}</span>
               </p>
               <p class="post-excerpt">{post.data.excerpt}</p>
-              <p><a href={`/blog/${post.slug}/`}>Read More →</a></p>
+              <p style="font-family:var(--mono); font-size:0.82rem; margin-top:0.4rem;"><a class="text-link" href={`/blog/${post.slug}/`}>Read →</a></p>
             </div>
           </>
         );

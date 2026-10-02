@@ -9,110 +9,167 @@ const featuredProjects = (await getCollection('projects'))
 const latestPosts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+  .slice(0, 4);
+
+const fmtDate = (d: Date) => d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 ---
 
-<Layout title="erwww.in | Frontend Engineer" description="Welcome to erwww.in – I'm a frontend engineer building modern, responsive, and user-friendly websites and applications." page="home" showFooter={false}>
-  <div class="screen">
-    <h1>[ERWIN]</h1>
-    <h2>Frontend Engineer</h2>
-    <p class="quote">A Developer's Journey, Told in Credits</p>
+<Layout title="erwww.in | Frontend Engineer" description="Erwin Nurhaq — frontend engineer in Jakarta. I turn wireframes into fast, friendly interfaces." page="home">
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <p class="kicker"><span class="dot"></span> Open for freelance — Jakarta / remote</p>
+      <h1>I make interfaces that <span class="italic">feel good</span> to <span class="strike">ship</span> use.</h1>
+      <p class="sub">
+        Hi, I'm <b>Erwin Nurhaq</b>. I turn rough wireframes into fast, friendly web apps.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="/projects/">View work →</a>
+        <a class="btn btn-ghost" href="#contact">Say hello</a>
+      </div>
+      <div class="micro mono">
+        <span>↳ replies within 2 days</span>
+        <span>↳ currently booking Nov–Dec</span>
+      </div>
+    </div>
+
+    <div class="card-wrap">
+      <aside class="index-card" id="index-card">
+        <div class="card-head"><span>Index card — № 001</span><span>erwww.in</span></div>
+        <dl>
+          <div class="card-row"><dt>Name</dt><dd><strong>Erwin Nurhaq</strong></dd></div>
+          <div class="card-row"><dt>Base</dt><dd>Jakarta, ID — GMT+7</dd></div>
+          <div class="card-row"><dt>Stack</dt><dd>TypeScript · React · Next.js · Node</dd></div>
+          <div class="card-row"><dt>Elsewhere</dt><dd><a class="text-link" href="https://github.com/erwinnurhaq" target="_blank" rel="noreferrer">github</a> · <a class="text-link" href="https://linkedin.com/in/erwinnurhaq" target="_blank" rel="noreferrer">linkedin</a></dd></div>
+          <div class="card-row"><dt>Status</dt><dd>→ open for projects</dd></div>
+        </dl>
+        <p class="hand">Right now: helping teams fix slow, clunky UIs. Ask me about animations that don't jank.<span class="cursor-blink"></span></p>
+      </aside>
+      <span class="card-scribble">← that's me, on paper</span>
+    </div>
+  </section>
+
+  <!-- TICKER (single marquee) -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker">
+      <span>TypeScript ✳ React ✳ Next.js ✳ Tailwind ✳ Node ✳ Bun ✳ Astro ✳&nbsp;</span>
+      <span>TypeScript ✳ React ✳ Next.js ✳ Tailwind ✳ Node ✳ Bun ✳ Astro ✳&nbsp;</span>
+    </div>
   </div>
 
-  <section>
-    <h3>Cast</h3>
-    <p><strong>Erwin Nurhaq</strong> as "The Developer"</p>
-    <p><strong>TypeScript</strong> as "The Language"</p>
-    <p><strong>React / Node / Bun</strong> as "The Toolkit"</p>
-    <p><strong>VS Code</strong> as "The Director"</p>
-    <p><strong>Google</strong> as "The Assistant Director"</p>
-    <p><strong>YouTube + StackOverflow</strong> as "The Mentors"</p>
-    <p><strong>Late Nights & Coffee</strong> as "The Producers"</p>
-  </section>
-
-  <section>
-    <h3>Written & Coded By</h3>
-    <p><strong>ERWIN</strong></p>
-    <p>A frontend engineer who turns wireframes into web realities and pixels into performance. Obsessed with UI
-      polish, smooth animations, and clean code.</p>
-    <p class="quote">"I make interfaces that not only work — but feel good to use."</p>
-  </section>
-
-  <section>
-    <h3>Special Thanks</h3>
-    <ul>
-      <li>To all the browsers that comply,</li>
-      <li>To all the APIs that respond,</li>
-      <li>To all the bugs that taught me something,</li>
-      <li>And to the users who never read changelogs.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h3>Featured Projects</h3>
-
-    {
-      featuredProjects.map((project) => (
-        <div class="project">
-          <p>
-            <strong>🎞 {project.data.title}</strong><br />
-            <a href={project.data.liveUrl} target="_blank">{project.data.liveUrl}</a><br />
-            {project.data.description}<br />
-            <em>Role:</em> {project.data.role}<br />
-            <em>Stack:</em> {project.data.stack}
-          </p>
+  <!-- 01 NOTES -->
+  <section class="section reveal">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <div>
+        <h2>Field notes, not buzzwords.</h2>
+        <p>What it's actually like to work with me on a random Tuesday when staging is on fire.</p>
+      </div>
+    </div>
+    <div class="notes">
+      <div class="note">
+        <span class="note-no">/a</span>
+        <div>
+          <h3>I speak in plain sentences.</h3>
+          <p>No “synergising cross-functional paradigms.” I’ll tell you what broke, what I tried, and what I’d do differently. If the design will be slow on mobile, I’ll say so early — with a faster alternative sketched out.</p>
         </div>
-      ))
-    }
-
-    <p class="quote">Want the full reel? <a href="/projects/">View all projects</a>.</p>
-  </section>
-
-  <section>
-    <h3>Latest Blog Highlights</h3>
-
-    {
-      latestPosts.map((post) => (
-        <div class="project">
-          <p>
-            <strong>📝 {post.data.title}</strong><br />
-            {post.data.excerpt}<br />
-            <a href={`/blog/${post.slug}/`}>Read More →</a>
-          </p>
+      </div>
+      <div class="note">
+        <span class="note-no">/b</span>
+        <div>
+          <h3>Polish is a feature.</h3>
+          <p>Loading states, empty states, error states, focus rings, reduced-motion fallbacks. The unglamorous 20% users feel but never compliment. I build it by default.</p>
         </div>
-      ))
-    }
-
-    <p><a href="/blog/">View All Blog Posts →</a></p>
+      </div>
+      <div class="note">
+        <span class="note-no">/c</span>
+        <div>
+          <h3>Fast over fancy.</h3>
+          <p>Wireframes → working UI → measured performance. I’d rather ship something quick and readable than something clever and fragile. Coffee helps. Tests help more.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h3>Next Feature: Collaborations Welcome 🎥</h3>
-    <p>I'm always open to freelance work, creative partnerships, and digital experiments.<br />
-      If you've got an idea that needs a frontend,<br />
-      let's roll the cameras.</p>
-    <p class="quote">Script it. Design it. Code it. Ship it.</p>
-  </section>
-
-  <section>
-    <h3>Production Notes</h3>
-    <p>Crafted with code, coffee, and curiosity.<br />
-      Deployed somewhere.<br />
-      <em>"No libraries were over-exploited in the making of this site."</em>
+  <!-- 02 WORK -->
+  <section class="section reveal">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <div>
+        <h2>Selected work.</h2>
+        <p>A short reel. Full case notes on the work page.</p>
+      </div>
+    </div>
+    <div class="ledger-head"><span>№ — Project</span><span>Stack / role</span></div>
+    <div class="ledger">
+      {featuredProjects.map((project, i) => (
+        <a class="row" href={`/projects/${project.slug}/`}>
+          <span class="row-no">{String(i + 1).padStart(2, '0')}</span>
+          <span class="row-title">{project.data.title}<small>{project.data.description}</small></span>
+          <span class="row-meta">{project.data.stack}<br />{project.data.role} <span class="row-arrow">↗</span></span>
+        </a>
+      ))}
+    </div>
+    <p style="margin-top:1.2rem; font-family:var(--mono); font-size:0.85rem;">
+      <a class="text-link" href="/projects/">Full archive →</a>
     </p>
   </section>
 
-  <div class="screen" id="lets-connect">
-    <h3>Let's Connect</h3>
-    <p>Looking for a creative frontend dev to join your next digital adventure?</p>
-    <p>
-      <strong>Email:</strong> <a href="mailto:mail@erwww.in">mail@erwww.in</a><br />
-      <strong>GitHub:</strong> <a href="https://github.com/erwinnurhaq"
-        target="_blank">github.com/erwinnurhaq</a><br />
-      <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/erwinnurhaq"
-        target="_blank">linkedin.com/in/erwinnurhaq</a><br />
-    </p>
+  <!-- 03 PROCESS + WRITING teaser split -->
+  <section class="section reveal">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <div>
+        <h2>How I work.</h2>
+      </div>
+    </div>
+    <div class="split">
+      <aside class="sticky-note">
+        <h3>A typical week with me</h3>
+        <p>Mon — map the mess. Tue–Thu — build in small shippable slices, Loom walkthroughs included. Fri — measure, clean up, write down what we learned.</p>
+        <p style="margin-top:0.6rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted);">No 40-slide decks. You get a link you can click.</p>
+      </aside>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div><strong>Read before I write.</strong><p>I start in the codebase and analytics, not Figma. Where do users drop? What’s slow? What already works?</p></div></li>
+        <li><span class="step-n">2</span><div><strong>Prototype the risky bit first.</strong><p>The gnarly interaction, the slow list, the edge case. If that feels good, the rest is downhill.</p></div></li>
+        <li><span class="step-n">3</span><div><strong>Leave it better than I found it.</strong><p>Small PRs, real commit messages, a short note on what changed and why. Future-you will thank present-me.</p></div></li>
+      </ol>
+    </div>
+  </section>
 
-    <footer>© Erwin Nurhaq <span id="footer-year"></span></footer>
-  </div>
+  <!-- 04 WRITING -->
+  <section class="section reveal">
+    <div class="sec-head">
+      <span class="sec-no">04</span>
+      <div>
+        <h2>Writing.</h2>
+        <p>Notes on portfolios, Figma handoffs, and micro-interactions. No growth-hack listicles.</p>
+      </div>
+    </div>
+    <div class="posts">
+      {latestPosts.map((post) => (
+        <a class="post-row" href={`/blog/${post.slug}/`}>
+          <time>{fmtDate(post.data.date)}</time>
+          <strong>{post.data.title}</strong>
+          <span class="tag">{post.data.tags[0] ?? 'note'}</span>
+        </a>
+      ))}
+    </div>
+    <p style="margin-top:1.2rem; font-family:var(--mono); font-size:0.85rem;">
+      <a class="text-link" href="/blog/">All notes →</a>
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="signoff reveal" id="contact">
+    <p class="mono" style="font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:0.8rem;">05 — Next feature: you?</p>
+    <h2>Got something half-sketched? Let’s finish it together.</h2>
+    <p>Freelance, contract, or a weird experiment that needs a frontend. Send a paragraph about what you’re making — I’ll reply with honest thoughts, even if we don’t work together.</p>
+    <a class="mail-big" href="mailto:mail@erwww.in">mail@erwww.in</a>
+    <div class="contact-grid">
+      <button class="pill copy-btn" id="copy-email" type="button">⧉ copy email</button>
+      <a class="pill" href="https://github.com/erwinnurhaq" target="_blank" rel="noreferrer">github ↗</a>
+      <a class="pill" href="https://linkedin.com/in/erwinnurhaq" target="_blank" rel="noreferrer">linkedin ↗</a>
+    </div>
+  </section>
 </Layout>

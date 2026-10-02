@@ -1,72 +1,121 @@
-const crosshairV = document.querySelector(".n-crosshair-v");
-const crosshairH = document.querySelector(".n-crosshair-h");
-const cursorOne = document.querySelector(".n-cursor-one");
-const cursorTwo = document.querySelector(".n-cursor-two");
-const footerYear = document.getElementById("footer-year");
+// erwww.in — small vanilla interactions, no frameworks
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const hoverableTagName = ["A", "H1", "H2", "H3", "BUTTON"];
-let mouseX = 0;
-let mouseY = 0;
-let hoverable = false;
-let needsUpdate = false;
+  // theme
+  var toggle = document.getElementById("theme-toggle");
+  function currentTheme() {
+    return (
+      document.documentElement.getAttribute("data-theme") ||
+      (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
+    );
+  }
+  function paintToggle() {
+    if (!toggle) return;
+    toggle.textContent = currentTheme() === "light" ? "◐ dark" : "◑ light";
+  }
+  paintToggle();
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var next = currentTheme() === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      paintToggle();
+    });
+  }
 
-function mouseMove({ clientX, clientY, target }) {
-	mouseX = clientX;
-	mouseY = clientY;
-	hoverable =
-		target.getAttribute("data-hoverable") !== null ||
-		hoverableTagName.includes(target.tagName);
-	needsUpdate = true;
-}
+  // jakarta clock
+  var clock = document.getElementById("clock");
+  function tickClock() {
+    if (!clock) return;
+    try {
+      var t = new Intl.DateTimeFormat("en-GB", {
+        hour: "2-digit", minute: "2-digit",
+        timeZone: "Asia/Jakarta",
+      }).format(new Date());
+      clock.textContent = "JKT " + t;
+    } catch (e) {
+      var d = new Date();
+      clock.textContent =
+        String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+    }
+  }
+  tickClock();
+  setInterval(tickClock, 20000);
 
-function mouseDown() {
-	cursorOne.classList.add("n-cursor-down");
-}
+  // scroll progress
+  var bar = document.getElementById("progress");
+  function onScroll() {
+    if (!bar) return;
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? h.scrollTop / max : 0;
+    bar.style.transform = "scaleX(" + p + ")";
+  }
+  if (!reduce) {
+    document.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
 
-function mousesUp() {
-	cursorOne.classList.remove("n-cursor-down");
-}
+  // reveal on scroll
+  var els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add("in"); });
+  }
 
-function updateCursor() {
-	if (needsUpdate) {
-		crosshairV.style.left = `${mouseX}px`;
-		crosshairH.style.top = `${mouseY}px`;
-		cursorOne.style.left = `${mouseX}px`;
-		cursorOne.style.top = `${mouseY}px`;
-		cursorTwo.style.transform = `translate3d(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%), 0) rotate(45deg)`;
-		cursorTwo.style.borderWidth = hoverable ? `4px` : `1px`;
-		needsUpdate = false;
-	}
-	requestAnimationFrame(updateCursor);
-}
+  // subtle tilt on index card (pointer only, no state spam)
+  var card = document.getElementById("index-card");
+  if (card && !reduce && window.matchMedia("(pointer: fine)").matches) {
+    var raf = 0;
+    card.addEventListener("mousemove", function (ev) {
+      var r = card.getBoundingClientRect();
+      var x = (ev.clientX - r.left) / r.width - 0.5;
+      var y = (ev.clientY - r.top) / r.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        card.style.transform =
+          "rotate(1.6deg) perspective(700px) rotateY(" + (x * 7) + "deg) rotateX(" + (-y * 7) + "deg)";
+      });
+    });
+    card.addEventListener("mouseleave", function () {
+      cancelAnimationFrame(raf);
+      card.style.transform = "";
+    });
+  }
 
-window.addEventListener("mousemove", mouseMove);
-window.addEventListener("mousedown", mouseDown);
-window.addEventListener("mouseup", mousesUp);
-if (footerYear) {
-	footerYear.innerHTML = new Date().getFullYear();
-}
+  // copy email
+  var copy = document.getElementById("copy-email");
+  if (copy) {
+    copy.addEventListener("click", function () {
+      var email = "mail@erwww.in";
+      function done() {
+        var old = copy.textContent;
+        copy.textContent = "✓ copied";
+        setTimeout(function () { copy.textContent = old; }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(done, done);
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = email;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+      }
+    });
+  }
 
-const themeToggle = document.getElementById("theme-toggle");
-if (themeToggle) {
-	const currentTheme =
-		document.documentElement.getAttribute("data-theme") ||
-		(window.matchMedia("(prefers-color-scheme: light)").matches
-			? "light"
-			: "dark");
-	themeToggle.innerText = currentTheme === "light" ? "[ ☾ ]" : "[ ☀ ]";
-
-	themeToggle.addEventListener("click", () => {
-		const isLight =
-			document.documentElement.getAttribute("data-theme") === "light" ||
-			(!document.documentElement.hasAttribute("data-theme") &&
-				window.matchMedia("(prefers-color-scheme: light)").matches);
-		const newTheme = isLight ? "dark" : "light";
-		document.documentElement.setAttribute("data-theme", newTheme);
-		localStorage.setItem("theme", newTheme);
-		themeToggle.innerText = newTheme === "light" ? "[ ☾ ]" : "[ ☀ ]";
-	});
-}
-
-console.info(`> Ich bin gut. lololol ∘ ∘ ∘ ( °ヮ° )'. `);
-requestAnimationFrame(updateCursor);
+  console.info("> still monochrome. still personal. — erwin");
+})();

@@ -24,14 +24,15 @@ const next = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 
 <Layout title={post.data.title} description={post.data.excerpt} page="post">
   <section class="back-navigation">
-    <p><a href="/blog/">← Back to Blog Index</a></p>
+    <p><a href="/blog/">← all notes</a></p>
   </section>
 
-  <section class="post-meta-container">
+  <section class="page-head">
+    <h1 style="max-width:18ch;">{post.data.title}</h1>
     <div class="post-meta">
-      <span class="meta-item">📅 {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
+      <span>{post.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
       {post.data.tags.length > 0 && (
-        <span>🏷️ {post.data.tags.join(', ')}</span>
+        <span> · {post.data.tags.join(' · ')}</span>
       )}
     </div>
   </section>
@@ -43,13 +44,13 @@ const next = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
   <section class="post-navigation">
     {previous && (
       <a href={`/blog/${previous.slug}/`} class="nav-prev">
-        <span class="nav-label">← Previous Post</span>
+        <span class="nav-label">← Older</span>
         <span class="nav-title">{previous.data.title}</span>
       </a>
     )}
     {next && (
       <a href={`/blog/${next.slug}/`} class="nav-next">
-        <span class="nav-label">Next Post →</span>
+        <span class="nav-label">Newer →</span>
         <span class="nav-title">{next.data.title}</span>
       </a>
     )}

@@ -7,28 +7,27 @@ const projects = (await getCollection('projects'))
   .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 ---
 
-<Layout title="Projects" description="Selected frontend engineering projects." page="projects">
+<Layout title="Projects" description="Selected frontend engineering work by Erwin Nurhaq." page="projects">
   <section class="back-navigation">
-    <p><a href="/">← Back to Home</a></p>
+    <p><a href="/">← home</a></p>
   </section>
 
-  <section>
-    <h1>Projects</h1>
-    <p class="blog-description">Selected frontend engineering work.</p>
+  <section class="page-head">
+    <p class="mono" style="font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Archive — {projects.length} projects</p>
+    <h1>Work.</h1>
+    <p>Things I've designed, built, or rescued. Live links where they're still breathing.</p>
+  </section>
 
-    {
-      projects.map((project) => (
-        <div class="project">
-          <p>
-            <strong>🎞 {project.data.title}</strong><br />
-            <a href={project.data.liveUrl} target="_blank">{project.data.liveUrl}</a><br />
-            {project.data.description}<br />
-            <em>Role:</em> {project.data.role}<br />
-            <em>Stack:</em> {project.data.stack}<br />
-            <a href={`/projects/${project.slug}/`}>Read case study →</a>
-          </p>
-        </div>
-      ))
-    }
+  <section style="padding-bottom:3rem;">
+    <div class="ledger-head"><span>№ — Project</span><span>Stack / role</span></div>
+    <div class="ledger">
+      {projects.map((project, i) => (
+        <a class="row" href={`/projects/${project.slug}/`}>
+          <span class="row-no">{String(i + 1).padStart(2, '0')}</span>
+          <span class="row-title">{project.data.title}<small>{project.data.description}</small></span>
+          <span class="row-meta">{project.data.stack}<br />{project.data.role} <span class="row-arrow">↗</span></span>
+        </a>
+      ))}
+    </div>
   </section>
 </Layout>

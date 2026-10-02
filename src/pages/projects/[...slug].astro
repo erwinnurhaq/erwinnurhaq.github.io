@@ -16,21 +16,16 @@ const { Content } = await project.render();
 
 <Layout title={project.data.title} description={project.data.description} page="project">
   <section class="back-navigation">
-    <p><a href="/projects/">← Back to Projects</a></p>
+    <p><a href="/projects/">← all work</a></p>
   </section>
 
-  <section>
+  <section class="page-head">
+    <p class="mono" style="font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">{project.data.role} — {project.data.stack}</p>
     <h1>{project.data.title}</h1>
-    <p>
-      <a href={project.data.liveUrl} target="_blank">{project.data.liveUrl}</a>
-    </p>
-    <p>
-      <strong>Role:</strong> {project.data.role}<br />
-      <strong>Stack:</strong> {project.data.stack}
-    </p>
+    <p><a class="text-link mono" style="font-size:0.85rem;" href={project.data.liveUrl} target="_blank" rel="noreferrer">{project.data.liveUrl} ↗</a></p>
   </section>
 
-  <section class="markdown-body">
+  <section class="markdown-body" style="padding-bottom:3rem;">
     <Content />
   </section>
 </Layout>
