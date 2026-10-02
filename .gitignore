@@ -1,4 +1,19 @@
-/node_modules
-/.next
-/_site
-/.jekyll-cache
+# dependencies
+node_modules
+
+# build output
+dist
+
+# astro
+.astro
+
+# old jekyll artifacts
+_site
+.jekyll-cache
+
+# next (legacy)
+.next
+
+# misc
+.DS_Store
+*.log

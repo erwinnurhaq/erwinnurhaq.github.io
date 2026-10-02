@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const sortedPosts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const currentIndex = sortedPosts.findIndex((p) => p.slug === post.slug);
+const previous = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+const next = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+---
+
+<Layout title={post.data.title} description={post.data.excerpt} page="post">
+  <section class="back-navigation">
+    <p><a href="/blog/">← Back to Blog Index</a></p>
+  </section>
+
+  <section class="post-meta-container">
+    <div class="post-meta">
+      <span class="meta-item">📅 {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
+      {post.data.tags.length > 0 && (
+        <span>🏷️ {post.data.tags.join(', ')}</span>
+      )}
+    </div>
+  </section>
+
+  <section class="markdown-body">
+    <Content />
+  </section>
+
+  <section class="post-navigation">
+    {previous && (
+      <a href={`/blog/${previous.slug}/`} class="nav-prev">
+        <span class="nav-label">← Previous Post</span>
+        <span class="nav-title">{previous.data.title}</span>
+      </a>
+    )}
+    {next && (
+      <a href={`/blog/${next.slug}/`} class="nav-next">
+        <span class="nav-label">Next Post →</span>
+        <span class="nav-title">{next.data.title}</span>
+      </a>
+    )}
+  </section>
+</Layout>

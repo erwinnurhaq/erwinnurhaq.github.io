@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const featuredProjects = (await getCollection('projects'))
+  .filter((p) => !p.data.draft && p.data.featured)
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+
+const latestPosts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<Layout title="erwww.in | Frontend Engineer" description="Welcome to erwww.in – I'm a frontend engineer building modern, responsive, and user-friendly websites and applications." page="home" showFooter={false}>
+  <div class="screen">
+    <h1>[ERWIN]</h1>
+    <h2>Frontend Engineer</h2>
+    <p class="quote">A Developer's Journey, Told in Credits</p>
+  </div>
+
+  <section>
+    <h3>Cast</h3>
+    <p><strong>Erwin Nurhaq</strong> as "The Developer"</p>
+    <p><strong>TypeScript</strong> as "The Language"</p>
+    <p><strong>React / Node / Bun</strong> as "The Toolkit"</p>
+    <p><strong>VS Code</strong> as "The Director"</p>
+    <p><strong>Google</strong> as "The Assistant Director"</p>
+    <p><strong>YouTube + StackOverflow</strong> as "The Mentors"</p>
+    <p><strong>Late Nights & Coffee</strong> as "The Producers"</p>
+  </section>
+
+  <section>
+    <h3>Written & Coded By</h3>
+    <p><strong>ERWIN</strong></p>
+    <p>A frontend engineer who turns wireframes into web realities and pixels into performance. Obsessed with UI
+      polish, smooth animations, and clean code.</p>
+    <p class="quote">"I make interfaces that not only work — but feel good to use."</p>
+  </section>
+
+  <section>
+    <h3>Special Thanks</h3>
+    <ul>
+      <li>To all the browsers that comply,</li>
+      <li>To all the APIs that respond,</li>
+      <li>To all the bugs that taught me something,</li>
+      <li>And to the users who never read changelogs.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Featured Projects</h3>
+
+    {
+      featuredProjects.map((project) => (
+        <div class="project">
+          <p>
+            <strong>🎞 {project.data.title}</strong><br />
+            <a href={project.data.liveUrl} target="_blank">{project.data.liveUrl}</a><br />
+            {project.data.description}<br />
+            <em>Role:</em> {project.data.role}<br />
+            <em>Stack:</em> {project.data.stack}
+          </p>
+        </div>
+      ))
+    }
+
+    <p class="quote">Want the full reel? <a href="/projects/">View all projects</a>.</p>
+  </section>
+
+  <section>
+    <h3>Latest Blog Highlights</h3>
+
+    {
+      latestPosts.map((post) => (
+        <div class="project">
+          <p>
+            <strong>📝 {post.data.title}</strong><br />
+            {post.data.excerpt}<br />
+            <a href={`/blog/${post.slug}/`}>Read More →</a>
+          </p>
+        </div>
+      ))
+    }
+
+    <p><a href="/blog/">View All Blog Posts →</a></p>
+  </section>
+
+  <section>
+    <h3>Next Feature: Collaborations Welcome 🎥</h3>
+    <p>I'm always open to freelance work, creative partnerships, and digital experiments.<br />
+      If you've got an idea that needs a frontend,<br />
+      let's roll the cameras.</p>
+    <p class="quote">Script it. Design it. Code it. Ship it.</p>
+  </section>
+
+  <section>
+    <h3>Production Notes</h3>
+    <p>Crafted with code, coffee, and curiosity.<br />
+      Deployed somewhere.<br />
+      <em>"No libraries were over-exploited in the making of this site."</em>
+    </p>
+  </section>
+
+  <div class="screen" id="lets-connect">
+    <h3>Let's Connect</h3>
+    <p>Looking for a creative frontend dev to join your next digital adventure?</p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:mail@erwww.in">mail@erwww.in</a><br />
+      <strong>GitHub:</strong> <a href="https://github.com/erwinnurhaq"
+        target="_blank">github.com/erwinnurhaq</a><br />
+      <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/erwinnurhaq"
+        target="_blank">linkedin.com/in/erwinnurhaq</a><br />
+    </p>
+
+    <footer>© Erwin Nurhaq <span id="footer-year"></span></footer>
+  </div>
+</Layout>

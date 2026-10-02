@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+---
+
+<Layout title="Projects" description="Selected frontend engineering projects." page="projects">
+  <section class="back-navigation">
+    <p><a href="/">← Back to Home</a></p>
+  </section>
+
+  <section>
+    <h1>Projects</h1>
+    <p class="blog-description">Selected frontend engineering work.</p>
+
+    {
+      projects.map((project) => (
+        <div class="project">
+          <p>
+            <strong>🎞 {project.data.title}</strong><br />
+            <a href={project.data.liveUrl} target="_blank">{project.data.liveUrl}</a><br />
+            {project.data.description}<br />
+            <em>Role:</em> {project.data.role}<br />
+            <em>Stack:</em> {project.data.stack}<br />
+            <a href={`/projects/${project.slug}/`}>Read case study →</a>
+          </p>
+        </div>
+      ))
+    }
+  </section>
+</Layout>

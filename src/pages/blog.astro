@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const formatYear = (date: Date) => date.getFullYear().toString();
+const formatMonth = (date: Date) =>
+  date.toLocaleDateString('en-US', { month: 'long' });
+const formatDay = (date: Date) =>
+  date.toLocaleDateString('en-US', { day: '2-digit' });
+---
+
+<Layout title="Blog" description="A collection of thoughts on frontend engineering, design, and building for the web." page="blog">
+  <section class="back-navigation">
+    <p><a href="/">← Back to Home</a></p>
+  </section>
+
+  <section>
+    <h1 class="blog-title">The Blog</h1>
+    <p class="blog-description">A collection of thoughts on frontend
+      engineering, design, and building for the web.</p>
+
+    {
+      posts.map((post, index) => {
+        const prev = posts[index - 1];
+        const showYear = !prev || post.data.date.getFullYear() !== prev.data.date.getFullYear();
+        const showMonth = !prev || post.data.date.getMonth() !== prev.data.date.getMonth();
+
+        return (
+          <>
+            {showYear && <h2 class="year-heading">{formatYear(post.data.date)}</h2>}
+            {showMonth && <h3 class="month-heading">{formatMonth(post.data.date)}</h3>}
+            <div class="post-item">
+              <p class="post-header">
+                <strong><a href={`/blog/${post.slug}/`} class="post-title">{post.data.title}</a></strong>
+                <span class="date">· {formatDay(post.data.date)}</span>
+              </p>
+              <p class="post-excerpt">{post.data.excerpt}</p>
+              <p><a href={`/blog/${post.slug}/`}>Read More →</a></p>
+            </div>
+          </>
+        );
+      })
+    }
+  </section>
+</Layout>

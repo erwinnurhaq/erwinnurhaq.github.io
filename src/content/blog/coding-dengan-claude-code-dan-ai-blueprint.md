@@ -1,8 +1,6 @@
 ---
 title: "Ngoding Pakai Claude Code dan AI Blueprint: Akhirnya AI yang Nggak Ngaco"
 date: 2026-09-02 10:00:00 +0700
-permalink: /blog/coding-dengan-claude-code-dan-ai-blueprint/
-published: true
 tags: [Development, AI, Claude Code, Workflow, Tools]
 excerpt: "Gimana caranya bikin Claude Code jadi reliable bikin fitur dari awal sampai selesai tanpa hallucinate di tengah jalan. Jawabannya: AI Blueprint."
 ---
