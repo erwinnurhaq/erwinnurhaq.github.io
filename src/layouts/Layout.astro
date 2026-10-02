@@ -12,6 +12,7 @@ export interface Props {
 
 const { title, description = "Erwin Nurhaq — Frontend Engineer in Jakarta. I make interfaces that feel good to use.", page = 'home', showFooter = true } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, 'https://erwww.in').href;
+const folioYear = new Date().getFullYear().toString().slice(2);
 ---
 
 <!DOCTYPE html>
@@ -51,7 +52,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://erwww.in').href;
       <div class="topbar-inner">
         <a class="brand" href="/">
           <span class="brand-mark">e.</span>
-          <span>erwww.in <small>— folio ’26</small></span>
+          <span>erwww.in <small>— folio ’{folioYear}</small></span>
         </a>
         <nav class="nav">
           <a class="hide-m" href="/projects/">work</a>
