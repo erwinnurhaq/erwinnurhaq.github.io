@@ -190,7 +190,7 @@ body[data-page="project"] .main-container {
 	position: relative;
 }
 
-footer {
+#lets-connect footer {
 	position: absolute;
 	bottom: 40px;
 	left: 50%;
