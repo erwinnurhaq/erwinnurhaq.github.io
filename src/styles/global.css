@@ -381,17 +381,10 @@ a { color: inherit; }
 
 /* two-col: process + about */
 .split { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
-.sticky-note {
-  position: sticky; top: 90px;
-  background: var(--card);
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.2rem;
-  box-shadow: 5px 5px 0 var(--line);
-  transform: rotate(-1deg);
-}
-.sticky-note h3 { font-size: 1.05rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-.sticky-note p { color: var(--ink-soft); font-size: 0.93rem; }
+.facts { margin-top: 1rem; border-top: 1px solid var(--line-soft); }
+.facts > div { display: grid; grid-template-columns: 96px 1fr; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line-soft); font-size: 0.92rem; }
+.facts dt { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 0.2rem; }
+.facts dd { margin: 0; color: var(--ink-soft); }
 .steps { list-style: none; }
 .steps li { padding: 1rem 0; border-bottom: 1px solid var(--line-soft); display: grid; grid-template-columns: 40px 1fr; gap: 0.8rem; }
 .steps li:last-child { border-bottom: none; }
@@ -399,27 +392,15 @@ a { color: inherit; }
 .steps strong { display: block; margin-bottom: 0.2rem; letter-spacing: -0.015em; }
 .steps p { color: var(--ink-soft); font-size: 0.93rem; }
 
-/* contact / sign-off */
-.signoff {
-  margin-top: 4rem;
-  border: 1.5px solid var(--line);
-  border-radius: 18px;
-  background: var(--card);
-  padding: clamp(1.6rem, 4vw, 3rem);
-  box-shadow: 7px 7px 0 var(--line);
-  position: relative;
-  overflow: hidden;
+/* contact / sign-off — plain type, no card */
+.contact {
+  margin-top: 4.5rem;
+  padding: 3rem 0 1rem;
+  border-top: 1.5px solid var(--line);
 }
-.signoff::after {
-  content: "✳";
-  position: absolute;
-  right: 18px; top: 10px;
-  font-size: 5rem;
-  opacity: 0.07;
-  line-height: 1;
-}
-.signoff h2 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.8rem; }
-.signoff p { color: var(--ink-soft); max-width: 52ch; }
+.contact-no { font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+.contact h2 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 0.8rem; max-width: 16ch; }
+.contact > p { color: var(--ink-soft); max-width: 52ch; }
 .mail-big {
   display: inline-block;
   margin-top: 1.2rem;
@@ -431,18 +412,13 @@ a { color: inherit; }
   text-underline-offset: 6px;
 }
 .mail-big:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
-.contact-grid { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.4rem; }
-.pill {
-  font-family: var(--mono); font-size: 0.8rem;
-  border: 1px solid var(--line-soft);
-  border-radius: 999px;
-  padding: 0.45rem 0.85rem;
-  text-decoration: none;
-  display: inline-flex; gap: 0.4rem; align-items: center;
-}
-.pill:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.copy-btn { cursor: pointer; background: transparent; color: var(--ink); }
-.copy-btn:active { transform: scale(0.97); }
+.contact-links { display: flex; gap: 1.4rem; margin-top: 1.5rem; font-family: var(--mono); font-size: 0.85rem; }
+.contact-links a { text-underline-offset: 4px; }
+.contact-links a:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+.copy-text { font: inherit; background: none; border: none; padding: 0; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.copy-text:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+.copy-text:active { transform: scale(0.97); }
+.contact-ps { margin-top: 1.8rem; font-size: 0.76rem; color: var(--muted); }
 
 .site-footer {
   margin-top: 3rem;
@@ -545,7 +521,6 @@ a { color: inherit; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 2.2rem; }
   .card-scribble { display: none; }
   .split { grid-template-columns: 1fr; }
-  .sticky-note { position: static; transform: none; }
   .post-row { grid-template-columns: 1fr; gap: 0.2rem; }
   .post-row .tag { justify-self: start; }
   .ledger a.row { grid-template-columns: 32px 1fr; }

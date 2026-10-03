@@ -124,11 +124,15 @@ const fmtDate = (d: Date) => d.toLocaleDateString('en-GB', { day: '2-digit', mon
       </div>
     </div>
     <div class="split">
-      <aside class="sticky-note">
+      <div>
         <h3>Practical things</h3>
-        <p>Based in Jakarta (GMT+7), working with teams in any timezone. Updates arrive in writing, with a link you can open. Calls when text isn't enough.</p>
-        <p style="margin-top:0.6rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted);">English and Indonesian, both fine.</p>
-      </aside>
+        <dl class="facts">
+          <div><dt>Base</dt><dd>Jakarta, GMT+7</dd></div>
+          <div><dt>Working</dt><dd>Async by default, calls when text isn't enough</dd></div>
+          <div><dt>Updates</dt><dd>In writing, with a link you can open</dd></div>
+          <div><dt>Languages</dt><dd>English and Indonesian</dd></div>
+        </dl>
+      </div>
       <ol class="steps">
         <li><span class="step-n">1</span><div><strong>Start from what's there.</strong><p>I read the existing code and look at the numbers first — what people use, what's slow, what's already working.</p></div></li>
         <li><span class="step-n">2</span><div><strong>The uncertain part first.</strong><p>Whatever I'm least sure about gets prototyped early, while it's still cheap to change.</p></div></li>
@@ -161,15 +165,16 @@ const fmtDate = (d: Date) => d.toLocaleDateString('en-GB', { day: '2-digit', mon
   </section>
 
   <!-- CONTACT -->
-  <section class="signoff reveal" id="contact">
-    <p class="mono" style="font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:0.8rem;">05 — Next feature: you?</p>
-    <h2>Got something half-sketched? Let’s finish it together.</h2>
-    <p>Freelance, contract, or a weird experiment that needs a frontend. Send a paragraph about what you’re making — I’ll reply with honest thoughts, even if we don’t work together.</p>
+  <section class="contact reveal" id="contact">
+    <p class="mono contact-no">05 — Say hello.</p>
+    <h2>Got something half-sketched? Let's finish it together.</h2>
+    <p>Freelance, contract, or a weird experiment that needs a frontend. Send a paragraph about what you're making — I'll reply with honest thoughts, even if we don't work together.</p>
     <a class="mail-big" href="mailto:mail@erwww.in">mail@erwww.in</a>
-    <div class="contact-grid">
-      <button class="pill copy-btn" id="copy-email" type="button">⧉ copy email</button>
-      <a class="pill" href="https://github.com/erwinnurhaq" target="_blank" rel="noreferrer">github ↗</a>
-      <a class="pill" href="https://linkedin.com/in/erwinnurhaq" target="_blank" rel="noreferrer">linkedin ↗</a>
+    <div class="contact-links">
+      <button class="copy-text" id="copy-email" type="button">[copy]</button>
+      <a href="https://github.com/erwinnurhaq" target="_blank" rel="noreferrer">github ↗</a>
+      <a href="https://linkedin.com/in/erwinnurhaq" target="_blank" rel="noreferrer">linkedin ↗</a>
     </div>
+    <p class="mono contact-ps">No contact form here — email works fine.</p>
   </section>
 </Layout>

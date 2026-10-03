@@ -100,7 +100,7 @@
       var email = "mail@erwww.in";
       function done() {
         var old = copy.textContent;
-        copy.textContent = "✓ copied";
+        copy.textContent = "[copied]";
         setTimeout(function () { copy.textContent = old; }, 1600);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
