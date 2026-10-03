@@ -69,17 +69,21 @@
 
   // ----- jakarta clock (aligned to the minute, no drift) -----
   var clock = document.getElementById("clock");
+  var clockFmt = null;
+  try {
+    clockFmt = new Intl.DateTimeFormat("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "Asia/Jakarta",
+    });
+  } catch (e) {
+    clockFmt = null;
+  }
   function tickClock() {
     if (!clock) return;
-    try {
-      clock.textContent =
-        "JKT " +
-        new Intl.DateTimeFormat("en-GB", {
-          hour: "2-digit",
-          minute: "2-digit",
-          timeZone: "Asia/Jakarta",
-        }).format(new Date());
-    } catch (e) {
+    if (clockFmt) {
+      clock.textContent = "JKT " + clockFmt.format(new Date());
+    } else {
       var d = new Date();
       clock.textContent =
         String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
@@ -98,9 +102,8 @@
     queued = true;
     requestAnimationFrame(function () {
       queued = false;
-      var h = root;
-      var max = h.scrollHeight - h.clientHeight;
-      var p = max > 0 ? h.scrollTop / max : 0;
+      var max = root.scrollHeight - root.clientHeight;
+      var p = max > 0 ? (window.scrollY || root.scrollTop) / max : 0;
       bar.style.transform = "scaleX(" + p + ")";
     });
   }
@@ -159,13 +162,17 @@
   // ----- copy email -----
   var copy = document.getElementById("copy-email");
   if (copy) {
+    copy.setAttribute("aria-live", "polite");
     copy.addEventListener("click", function () {
       var email = "mail@erwww.in";
       function done() {
-        var old = copy.textContent;
+        var old = copy.getAttribute("data-label") || copy.textContent;
+        copy.setAttribute("data-label", old);
         copy.textContent = "[copied]";
+        copy.setAttribute("aria-label", "Email address copied to clipboard");
         setTimeout(function () {
           copy.textContent = old;
+          copy.setAttribute("aria-label", "Copy email address to clipboard");
         }, 1600);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {

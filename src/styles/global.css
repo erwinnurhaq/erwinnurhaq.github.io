@@ -13,7 +13,7 @@
   --card: #191918;
   --tape: rgba(236, 233, 226, 0.1);
   --radius: 14px;
-  --sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 }
 
@@ -61,6 +61,29 @@ a { color: inherit; }
 
 .mono { font-family: var(--mono); }
 
+/* skip link + keyboard focus — the homepage promises keyboard support,
+   so focused elements must be visible in both themes. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-link:focus { top: 0.7rem; }
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* progress */
 .progress {
   position: fixed;
@@ -78,9 +101,15 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(12px);
-  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  background: var(--paper);
   border-bottom: 1px solid var(--line-soft);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .topbar {
+    background: color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 .topbar-inner {
   max-width: 1080px;
@@ -155,8 +184,11 @@ a { color: inherit; }
   width: 8px; height: 8px;
   background: #2e9e5b;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px color-mix(in srgb, #2e9e5b 18%, transparent);
+  box-shadow: 0 0 0 4px rgba(46, 158, 91, 0.18);
   animation: pulse 2.2s infinite;
+}
+@supports (color: color-mix(in srgb, red 50%, transparent)) {
+  .kicker .dot { box-shadow: 0 0 0 4px color-mix(in srgb, #2e9e5b 18%, transparent); }
 }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
 .hero h1 {
@@ -414,8 +446,38 @@ a { color: inherit; }
 
 /* inner pages */
 .page-head { padding: 3rem 0 1rem; }
-.page-head h1 { font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -0.04em; line-height: 1; }
+.page-head h1 { font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -0.04em; line-height: 1; text-wrap: balance; }
 .page-head p { color: var(--muted); margin-top: 0.6rem; max-width: 58ch; }
+
+/* project case-study header — replaces the "coming soon" stubs with
+   a scannable fact sheet: role, stack, links. */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 1.6rem 0 0;
+  background: var(--card);
+}
+.facts > div { padding: 0.9rem 1.1rem; border-top: 1px solid var(--line-soft); }
+.facts > div:first-child { border-top: none; }
+@media (min-width: 640px) {
+  .facts { grid-template-columns: repeat(3, 1fr); }
+  .facts > div { border-top: none; border-left: 1px solid var(--line-soft); }
+  .facts > div:first-child { border-left: none; }
+}
+.facts dt {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.facts dd { margin: 0; font-size: 0.92rem; }
+.live-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.2rem; }
 .back-navigation { padding-top: 1.6rem; font-family: var(--mono); font-size: 0.82rem; }
 .back-navigation a { text-decoration: none; color: var(--muted); }
 .back-navigation a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
@@ -502,8 +564,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .post-row { grid-template-columns: 1fr; gap: 0.2rem; }
   .post-row .tag { justify-self: start; }
   .ledger a.row { grid-template-columns: 32px 1fr; }
-  .row-meta { display: none; }
-  .row-arrow { display: none; }
+  .row-meta {
+    grid-column: 2;
+    text-align: left;
+    font-size: 0.72rem;
+  }
+  .row-meta br { display: none; }
+  .row-meta .row-arrow { display: inline; margin-left: 0.3rem; }
   .nav .clock, .nav .hide-m { display: none; }
   .post-navigation { grid-template-columns: 1fr; }
 }

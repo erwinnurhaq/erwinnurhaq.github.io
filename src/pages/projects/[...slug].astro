@@ -21,9 +21,14 @@ const { Content } = await render(project);
   </section>
 
   <section class="page-head">
-    <p class="mono" style="font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">{project.data.role} — {project.data.stack}</p>
+    <p class="mono" style="font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Case note — {project.data.role}</p>
     <h1>{project.data.title}</h1>
-    <p><a class="text-link mono" style="font-size:0.85rem;" href={project.data.liveUrl} target="_blank" rel="noreferrer">{project.data.liveUrl} ↗</a></p>
+    <p>{project.data.description}</p>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>{project.data.role}</dd></div>
+      <div><dt>Stack</dt><dd>{project.data.stack}</dd></div>
+      <div><dt>Status</dt><dd><a class="text-link" href={project.data.liveUrl} target="_blank" rel="noreferrer">Live site ↗</a>{project.data.repoUrl && <> · <a class="text-link" href={project.data.repoUrl} target="_blank" rel="noreferrer">Code ↗</a></>}</dd></div>
+    </dl>
   </section>
 
   <section class="markdown-body" style="padding-bottom:3rem;">

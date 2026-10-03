@@ -8,6 +8,25 @@ order: 3
 description: "A digital monster card database."
 ---
 
-A digital monster card database.
+## Overview
 
-More details about the project coming soon.
+DCDB is a searchable database of digital monster cards — the kind of app where the frontend *is* the product. Search, filtering, and card detail pages have to feel instant even with hundreds of entries.
+
+I owned the frontend end to end on **Remix + Node.js**: routes, data loading, components, and styling.
+
+## What I did
+
+- Built the core flows: browse/search, filtering, and card detail views with server-rendered routes so the first paint has content, not a spinner.
+- Designed the data-fetching around Remix loaders so each route declares what it needs — failures surface as route-level error boundaries with a retry path, not a white screen.
+- Covered the three states every list needs: **loading** (skeletons), **empty** ("no cards match these filters" + clear-filters action), and **error** (what broke, what to try next).
+- Made search keyboard-friendly: focusable input, reachable results, visible focus rings, and no keyboard traps in dialogs or menus.
+
+## Performance & accessibility notes
+
+- Server rendering + progressive enhancement: the page works before client JS hydrates, and stays usable on slow networks.
+- Paginated/filtered queries instead of dumping the whole collection into the DOM.
+- Reduced-motion respected throughout; status changes (loading → results) announced in a way assistive tech can follow.
+
+## Links
+
+- Live: [dcdb.fly.dev](https://dcdb.fly.dev)

@@ -30,9 +30,21 @@ const folioYear = new Date().getFullYear().toString().slice(2);
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://erwww.in/og.svg" />
+    <meta property="og:image:alt" content="erwww.in — Erwin Nurhaq, Frontend Engineer" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://erwww.in/og.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Erwin Nurhaq',
+      url: 'https://erwww.in',
+      jobTitle: 'Frontend Engineer',
+      address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
+      sameAs: ['https://github.com/erwinnurhaq', 'https://linkedin.com/in/erwinnurhaq'],
+    })} />
     <!-- External file (not inlined): the site is served with a
          Content-Security-Policy that blocks inline scripts. This classic
          script blocks parsing by design, so the theme applies pre-paint. -->
@@ -45,6 +57,7 @@ const folioYear = new Date().getFullYear().toString().slice(2);
   </head>
 
   <body data-page={page}>
+    <a class="skip-link" href="#main">Skip to content</a>
     <div class="progress" id="progress"></div>
     <header class="topbar">
       <div class="topbar-inner">
@@ -52,7 +65,7 @@ const folioYear = new Date().getFullYear().toString().slice(2);
           <span class="brand-mark">e.</span>
           <span>erwww.in <small>— folio ’{folioYear}</small></span>
         </a>
-        <nav class="nav">
+        <nav class="nav" aria-label="Primary">
           <a class="hide-m" href="/projects/">work</a>
           <a class="hide-m" href="/blog/">writing</a>
           <a href="/#contact">contact</a>
@@ -62,10 +75,10 @@ const folioYear = new Date().getFullYear().toString().slice(2);
       </div>
     </header>
 
-    <div class="main-container">
+    <main class="main-container" id="main">
       <slot />
       {showFooter && <Footer />}
-    </div>
+    </main>
 
     <!-- External files (not inlined/bundled): CSP blocks inline scripts. -->
     <script is:inline src="/main.js" defer></script>
