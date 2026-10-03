@@ -24,6 +24,19 @@
     });
   }
 
+  // re-assert on bfcache restore + sync across tabs
+  function applyStored() {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    if (saved === "light" || saved === "dark") {
+      document.documentElement.setAttribute("data-theme", saved);
+      paintToggle();
+    }
+  }
+  window.addEventListener("pageshow", applyStored);
+  window.addEventListener("storage", function (ev) {
+    if (ev && ev.key === "theme") applyStored();
+  });
   // jakarta clock
   var clock = document.getElementById("clock");
   function tickClock() {

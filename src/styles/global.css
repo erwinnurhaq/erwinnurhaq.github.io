@@ -1,6 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
+  color-scheme: light;
   --paper: #faf9f6;
   --ink: #161616;
   --ink-soft: #3d3d3b;
@@ -17,6 +18,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --paper: #121211;
   --ink: #ece9e2;
   --ink-soft: #c9c6bd;
@@ -30,7 +32,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
     --paper: #121211;
     --ink: #ece9e2;
     --ink-soft: #c9c6bd;
