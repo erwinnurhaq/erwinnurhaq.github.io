@@ -379,20 +379,12 @@ a { color: inherit; }
 .post-row strong { font-weight: 600; letter-spacing: -0.015em; }
 .post-row .tag { font-family: var(--mono); font-size: 0.72rem; border: 1px solid var(--line-soft); border-radius: 999px; padding: 0.15rem 0.6rem; color: var(--muted); white-space: nowrap; }
 
-/* two-col: process + about */
-.split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
-.facts { margin-top: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; }
-.facts > div { border-top: 1px solid var(--line); padding-top: 0.55rem; }
-.facts dt { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.25rem; }
-.facts dd { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
-.steps { list-style: none; margin-top: 0.4rem; }
-.steps li { padding: 1.1rem 0; border-bottom: 1px solid var(--line-soft); display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.6rem; }
-.steps li:last-child { border-bottom: none; }
-.step-n { font-family: var(--mono); font-size: 0.85rem; color: var(--faint); padding-top: 0.15rem; }
-.steps strong { display: block; margin-bottom: 0.2rem; letter-spacing: -0.015em; }
-.steps p { color: var(--ink-soft); font-size: 0.93rem; }
+/* letter — plain prose, no columns or badges */
+.letter { max-width: 62ch; }
+.letter p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.75; }
+.letter p + p { margin-top: 1.2rem; }
 
-/* contact / sign-off — plain type, no card */
+/* contact — plain type, no card */
 .contact {
   margin-top: 6rem;
   padding: 4rem 0 1rem;
@@ -520,8 +512,6 @@ a { color: inherit; }
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 2.2rem; }
   .card-scribble { display: none; }
-  .split { grid-template-columns: 1fr; }
-  .facts { grid-template-columns: 1fr; gap: 1.1rem; }
   .post-row { grid-template-columns: 1fr; gap: 0.2rem; }
   .post-row .tag { justify-self: start; }
   .ledger a.row { grid-template-columns: 32px 1fr; }
