@@ -141,7 +141,7 @@ const fmtDate = (d: Date) => d.toLocaleDateString('en-GB', { day: '2-digit', mon
     <div class="posts">
       {latestPosts.map((post) => (
         <a class="post-row" href={`/blog/${post.slug}/`}>
-          <time>{fmtDate(post.data.date)}</time>
+          <time datetime={post.data.date.toISOString()}>{fmtDate(post.data.date)}</time>
           <strong>{post.data.title}</strong>
           <span class="tag">{post.data.tags[0] ?? 'note'}</span>
         </a>

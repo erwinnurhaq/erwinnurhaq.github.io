@@ -1,23 +1,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  color-scheme: light;
-  --paper: #faf9f6;
-  --ink: #161616;
-  --ink-soft: #3d3d3b;
-  --muted: #73726e;
-  --faint: #a8a6a0;
-  --line: #161616;
-  --line-soft: rgba(22, 22, 22, 0.16);
-  --wash: #efede7;
-  --card: #ffffff;
-  --tape: rgba(22, 22, 22, 0.08);
-  --radius: 14px;
-  --sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
-}
-
-[data-theme="dark"] {
   color-scheme: dark;
   --paper: #121211;
   --ink: #ece9e2;
@@ -29,22 +12,23 @@
   --wash: #1c1c1a;
   --card: #191918;
   --tape: rgba(236, 233, 226, 0.1);
+  --radius: 14px;
+  --sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    color-scheme: dark;
-    --paper: #121211;
-    --ink: #ece9e2;
-    --ink-soft: #c9c6bd;
-    --muted: #8f8d86;
-    --faint: #5c5b56;
-    --line: #ece9e2;
-    --line-soft: rgba(236, 233, 226, 0.16);
-    --wash: #1c1c1a;
-    --card: #191918;
-    --tape: rgba(236, 233, 226, 0.1);
-  }
+[data-theme="light"] {
+  color-scheme: light;
+  --paper: #faf9f6;
+  --ink: #161616;
+  --ink-soft: #3d3d3b;
+  --muted: #73726e;
+  --faint: #a8a6a0;
+  --line: #161616;
+  --line-soft: rgba(22, 22, 22, 0.16);
+  --wash: #efede7;
+  --card: #ffffff;
+  --tape: rgba(22, 22, 22, 0.08);
 }
 
 ::selection { background: var(--ink); color: var(--paper); }
@@ -256,7 +240,6 @@ a { color: inherit; }
   width: 64px; height: 20px;
   background: var(--tape);
   border: 1px solid var(--line-soft);
-  backdrop-filter: blur(2px);
 }
 .index-card::before { left: 18px; transform: rotate(-8deg); }
 .index-card::after { right: 18px; transform: rotate(7deg); }
@@ -506,11 +489,12 @@ a { color: inherit; }
 .post-navigation .nav-label { font-size: 0.72rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; display: block; margin-bottom: 0.3rem; }
 .post-navigation .nav-next { text-align: right; }
 
-/* reveal */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-.reveal.in { opacity: 1; transform: none; }
-
-.n-cursor-one, .n-cursor-two, .n-crosshair-v, .n-crosshair-h { display: none; }
+/* reveal — hidden state only applies when JS runs (html.js is added by
+   the synchronous theme boot script). No-JS gets fully visible content,
+   plus a <noscript> override as a second net. */
+.reveal { opacity: 1; }
+html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+html.js .reveal.in { opacity: 1; transform: none; }
 
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 2.2rem; }
@@ -526,7 +510,7 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  html.js .reveal { opacity: 1; transform: none; }
   .ticker-track { animation: none; }
   html { scroll-behavior: auto; }
 }

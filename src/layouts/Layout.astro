@@ -20,10 +20,11 @@ const folioYear = new Date().getFullYear().toString().slice(2);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{title === "erwww.in | Frontend Engineer" ? title : `${title} | erwww.in`}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Erwin Nurhaq" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#121211" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
@@ -33,17 +34,32 @@ const folioYear = new Date().getFullYear().toString().slice(2);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <script is:inline>
+      // Theme boot: runs synchronously in <head> so the correct theme is
+      // applied before first paint (no flash). ALWAYS sets an explicit
+      // data-theme — there is no "unset" state for CSS to guess about.
+      // Single source of truth: localStorage value wins, else OS preference.
       (() => {
+        var root = document.documentElement;
+        root.classList.add("js");
+        var theme = "dark";
         try {
           var saved = localStorage.getItem("theme");
-          if (saved) {
-            document.documentElement.setAttribute("data-theme", saved);
+          if (saved === "light" || saved === "dark") {
+            theme = saved;
           } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-            document.documentElement.setAttribute("data-theme", "light");
+            theme = "light";
           }
         } catch (e) {}
+        root.setAttribute("data-theme", theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "light" ? "#faf9f6" : "#121211");
       })();
     </script>
+    <noscript>
+      <style>
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
   </head>
 
   <body data-page={page}>
@@ -69,6 +85,6 @@ const folioYear = new Date().getFullYear().toString().slice(2);
       {showFooter && <Footer />}
     </div>
 
-    <script is:inline src="/main.js" defer></script>
+    <script src="../scripts/main.js"></script>
   </body>
 </html>

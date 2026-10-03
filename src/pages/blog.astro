@@ -33,7 +33,7 @@ const formatDay = (date: Date) =>
             <div class="post-item">
               <p>
                 <a href={`/blog/${post.slug}/`} class="post-title">{post.data.title}</a>
-                <span class="date">{formatDay(post.data.date)}</span>
+                <time class="date" datetime={post.data.date.toISOString()}>{formatDay(post.data.date)}</time>
               </p>
               <p class="post-excerpt">{post.data.excerpt}</p>
               <p style="font-family:var(--mono); font-size:0.82rem; margin-top:0.4rem;"><a class="text-link" href={`/blog/${post.slug}/`}>Read →</a></p>
