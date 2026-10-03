@@ -1,23 +1,24 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import { slugOf } from '../../utils/slug';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: slugOf(post) },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const sortedPosts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const currentIndex = sortedPosts.findIndex((p) => p.slug === post.slug);
+const currentIndex = sortedPosts.findIndex((p) => p.id === post.id);
 const previous = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 const next = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 ---
@@ -43,13 +44,13 @@ const next = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 
   <section class="post-navigation">
     {previous && (
-      <a href={`/blog/${previous.slug}/`} class="nav-prev">
+      <a href={`/blog/${slugOf(previous)}/`} class="nav-prev">
         <span class="nav-label">← Older</span>
         <span class="nav-title">{previous.data.title}</span>
       </a>
     )}
     {next && (
-      <a href={`/blog/${next.slug}/`} class="nav-next">
+      <a href={`/blog/${slugOf(next)}/`} class="nav-next">
         <span class="nav-label">Newer →</span>
         <span class="nav-title">{next.data.title}</span>
       </a>
