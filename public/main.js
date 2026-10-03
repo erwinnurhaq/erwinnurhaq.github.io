@@ -1,5 +1,6 @@
 // erwww.in — small vanilla interactions, no frameworks.
-// Bundled by Astro (content-hashed filename), deferred by default as a module.
+// NOTE: kept as a separate external file (not inlined/bundled) because the
+// site is served with a Content-Security-Policy that blocks inline scripts.
 (function () {
   "use strict";
   var root = document.documentElement;
@@ -32,7 +33,7 @@
     if (!toggle) return;
     var light = currentTheme() === LIGHT;
     // Label shows the CURRENT theme; aria-label announces the action.
-    toggle.textContent = light ? "\u25D0 light" : "\u25D1 dark";
+    toggle.textContent = light ? "◐ light" : "◑ dark";
     toggle.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
   }
   function applyTheme(next, persist) {
